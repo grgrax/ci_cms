@@ -88,7 +88,7 @@
 	<script src="<?=admin_template_asset_path()?>/js/jquery.history.js"></script>
 
 	<!-- application script for Charisma demo -->
-	<script src="<?=admin_template_asset_path()?>/js/charisma.js"></script>
+	<script src="<?=admin_template_asset_path()?>/js/charisma_ci.js"></script>
 	
 		
 </body>

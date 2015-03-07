@@ -34,6 +34,13 @@
 <link href='<?=admin_template_asset_path()?>/css/opa-icons.css' rel='stylesheet'>
 <link href='<?=admin_template_asset_path()?>/css/uploadify.css' rel='stylesheet'>
 
+
+<!-- SB Admin CSS - Include with every page -->
+<link href="<?=admin_template_asset_path()?>/css/bootstrap.min.css" rel="stylesheet">
+<!-- my CSS - Include with every page -->
+<link href="<?=admin_template_asset_path()?>/css/my.css" rel="stylesheet">
+
+
 <!-- <link href="<?=admin_template_asset_path()?>/css/bootstrap.min.css" rel="stylesheet">
  -->
 <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->

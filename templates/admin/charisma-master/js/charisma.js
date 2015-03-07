@@ -18,9 +18,7 @@ $(document).ready(function(){
 	
 	function switch_theme(theme_name)
 	{
-		//custom templating by rax 
-		$path='templates/admin/charisma-master/css/bootstrap-'+theme_name+'.css';
-		$('#bs-css').attr('href',$path);
+		$('#bs-css').attr('href','css/bootstrap-'+theme_name+'.css');
 	}
 	
 	//ajax menu checkbox
@@ -153,10 +151,9 @@ function docReady(){
 	//popover
 	$('[rel="popover"],[data-rel="popover"]').popover();
 
-
 	//file manager
 	var elf = $('.file-manager').elfinder({
-		url : 'templates/admin/charisma-master/misc/elfinder-connector/connector.php'  // connector URL (REQUIRED)
+		url : 'misc/elfinder-connector/connector.php'  // connector URL (REQUIRED)
 	}).elfinder('instance');
 
 	//iOS / iPhone style toggle switch

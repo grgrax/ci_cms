@@ -9,7 +9,7 @@ class filemanager extends Admin_Controller
 		//if(!permission_permit(['administrator-filemanager'])) redirect_to_dashboard();
 		$this->template_data['link']=base_url().self::MODULE;
 		$this->template_data['url']=base_url().self::MODULE;
-		$this->breadcrumb->append_crumb('List filemanagers',base_url().self::MODULE.'index');
+		$this->breadcrumb->append_crumb('File manager',base_url().self::MODULE.'index');
 	}
 
 	function index($offset=0)

@@ -1,6 +1,4 @@
-<?php 
-$CI =& get_instance();
-?>
+<?php if(config_item('admin_template')=='charisma') { ?>
 <div class="panel panel-default">
     <div class="panel-heading"><h3>File Manager</h3></div>
     <div class="panel-body">
@@ -23,19 +21,36 @@ $CI =& get_instance();
                                         <button type="button" class="close" data-dismiss="alert">×</button>
                                         <i class="icon-info-sign"></i> As its a demo, you currently have read-only permission, in your server you may do everything like, upload or delete. It will work on a server only.
                                     </div>
-                                     -->                                    
-                                     <div class="file-manager"></div>
-                                </div>
-                            </div><!--/span-->            
-                        </div><!--/row-->
-                    </td>
+                                -->                                    
+                                <div class="file-manager"></div>
+                            </div>
+                        </div><!--/span-->            
+                    </div><!--/row-->
+                </td>
 
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="panel-footer">
-    </div>
+            </tr>
+        </tbody>
+    </table>
 </div>
+<div class="panel-footer">
+</div>
+</div>
+<?php } ?>
 
 
+
+<?php if(config_item('admin_template')=='metis') { ?>
+<div class="box">
+  <header>
+    <div class="icons">
+      <i class="icon-folder-open-alt"></i>
+  </div>
+  <h5>File Manager</h5>
+</header>
+<div class="row">
+    <div class="col-lg-12">
+      <div id="elfinder"></div>
+  </div><!-- /.col-lg-12 -->
+</div><!-- /.row -->
+</div>
+<?php } ?>
