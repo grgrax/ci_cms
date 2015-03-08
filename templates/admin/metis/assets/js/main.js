@@ -749,13 +749,13 @@ function formWysiwyg() {
     "use strict";
 
     /*----------- BEGIN wysihtml5 CODE -------------------------*/
-    $('#wysihtml5').wysihtml5();
+    //$('#wysihtml5').wysihtml5();
     /*----------- END wysihtml5 CODE -------------------------*/
 
     /*----------- BEGIN Markdown.Editor CODE -------------------------*/
-    var converter = Markdown.getSanitizingConverter();
-    var editor = new Markdown.Editor(converter);
-    editor.run();
+    //var converter = Markdown.getSanitizingConverter();
+    //var editor = new Markdown.Editor(converter);
+    //editor.run();
     /*----------- END Markdown.Editor CODE -------------------------*/
 
     /*----------- BEGIN cleditor CODE -------------------------*/
@@ -774,7 +774,7 @@ function formWysiwyg() {
     
     /*----------- BEGIN epiceditor CODE -------------------------*/
     var opts={
-      basePath: 'assets/lib/epiceditor',
+      basePath: 'templates/admin/metis/assets/lib/epiceditor',
     };
     var editor = new EpicEditor(opts).load();
     /*----------- END epiceditor CODE -------------------------*/

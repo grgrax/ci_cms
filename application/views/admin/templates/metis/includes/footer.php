@@ -29,6 +29,7 @@
 <script src="<?=admin_template_asset_path()?>/assets/js/main.js"></script>
 
 <?php 
+echo uri_string();
 switch (uri_string()) {
   case 'filemanager':{
     ?>
@@ -42,6 +43,23 @@ switch (uri_string()) {
     <?php 
     break;
   } 
+  case 'category/add':{
+    ?>
+    <script src="<?=admin_template_asset_path()?>/assets/lib/wysihtml5/lib/js/wysihtml5-0.3.0.min.js"></script>
+    <script src="<?=admin_template_asset_path()?>/assets/lib/bootstrap-wysihtml5-hack.js"></script>
+    <script src="<?=admin_template_asset_path()?>/assets/lib/cleditor/jquery.cleditor.js"></script>
+    <script src="<?=admin_template_asset_path()?>/assets/lib/pagedown-bootstrap/Markdown.Converter.js"></script>
+    <script src="<?=admin_template_asset_path()?>/assets/lib/pagedown-bootstrap/Markdown.Sanitizer.js"></script>
+    <script src="<?=admin_template_asset_path()?>/assets/lib/Markdown.Editor-hack.js"></script>
+    <script src="<?=admin_template_asset_path()?>/assets/lib/epiceditor/js/epiceditor.min.js"></script>
+    <script>
+      $(function() {
+        formWysiwyg();
+      });
+    </script>
+
+    <?php
+  }
   default:{
     ?>
     <script src="<?=admin_template_asset_path()?>/assets/lib/jquery-ui.min.js"></script> 

@@ -18,6 +18,21 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/Font-Awesome/css/font-awesome.min.css">
 
+  <?php 
+  switch (uri_string()) {
+    case 'add':{
+      ?>
+      <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/wysihtml5/dist/bootstrap-wysihtml5-0.0.2.css">
+      <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/Markdown.Editor.hack.css">
+      <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/cleditor/jquery.cleditor.css">
+      <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/jquery.cleditor-hack.css">
+      <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/bootstrap-wysihtml5-hack.css">
+      <?php 
+      break;
+    } 
+  }
+  ?>
+
   <!-- Metis core stylesheet -->
   <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/main.min.css">
   <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/theme.css">
@@ -105,7 +120,6 @@
                   <ul class="nav navbar-nav">
                     <li> <a href="dashboard.html">Dashboard</a>  </li>
                     <li> <a href="table.html">Tables</a>  </li>
-                    <li> <a href="<?=admin_template_asset_path()?>/file.html">File Manager</a>  </li>
                     <li> <a href="<?=base_url()?>filemanager">File Manager</a></li>
                     <li class='dropdown '>
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -119,6 +133,8 @@
                         <li> <a href="form-wizard.html">Wizard &amp; File Upload</a>  </li>
                       </ul>
                     </li>
+                    <li> <a href="<?=admin_template_asset_path()?>/file.html">File Manager</a>  </li>
+                    <li> <a href="<?=admin_template_asset_path()?>/form-wysiwyg.html">WYSIWYG</a>  </li>
                   </ul><!-- /.nav -->
                 </div>
               </nav><!-- /.navbar -->
