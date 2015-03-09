@@ -40,6 +40,7 @@
 
 
 <?php if(config_item('admin_template')=='metis') { ?>
+
 <div class="box">
   <header>
     <div class="icons">
