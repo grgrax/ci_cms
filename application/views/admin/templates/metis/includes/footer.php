@@ -34,6 +34,7 @@ switch (uri_string()) {
   case 'filemanager':{
     ?>
     <script src="<?=admin_template_asset_path()?>/assets/lib/jquery-ui.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="<?=admin_template_asset_path()?>/assets/lib/elfinder/js/elfinder.min.js"></script>
     <script>
       $(function() {
