@@ -24,16 +24,15 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal --><!-- /#helpModal -->
-<script src="<?=admin_template_asset_path()?>/assets/lib/jquery.min.js"></script>
 <script src="<?=admin_template_asset_path()?>/assets/lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?=admin_template_asset_path()?>/assets/js/main.js"></script>
+<script src="<?=admin_template_asset_path()?>/assets/lib/jquery-ui.min.js"></script>
 
 <?php 
 echo uri_string();
 switch (uri_string()) {
   case 'filemanager':{
     ?>
-    <script src="<?=admin_template_asset_path()?>/assets/lib/jquery-ui.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="<?=admin_template_asset_path()?>/assets/lib/elfinder/js/elfinder.min.js"></script>
     <script>
@@ -48,23 +47,31 @@ switch (uri_string()) {
     ?>
     <script src="<?=admin_template_asset_path()?>/assets/lib/wysihtml5/lib/js/wysihtml5-0.3.0.min.js"></script>
     <script src="<?=admin_template_asset_path()?>/assets/lib/bootstrap-wysihtml5-hack.js"></script>
-    <script src="<?=admin_template_asset_path()?>/assets/lib/cleditor/jquery.cleditor.js"></script>
     <script src="<?=admin_template_asset_path()?>/assets/lib/pagedown-bootstrap/Markdown.Converter.js"></script>
     <script src="<?=admin_template_asset_path()?>/assets/lib/pagedown-bootstrap/Markdown.Sanitizer.js"></script>
     <script src="<?=admin_template_asset_path()?>/assets/lib/Markdown.Editor-hack.js"></script>
-    <script src="<?=admin_template_asset_path()?>/assets/lib/epiceditor/js/epiceditor.min.js"></script>
     <script>
       $(function() {
         formWysiwyg();
       });
     </script>
-
+    <script src="<?=base_url()?>/assets/ckeditor/ckeditor.js"></script>
+    <script>
+      CKEDITOR.replace( 'ckeditor', {
+        customConfig: 'web/custom/custom_config.js'
+      } );
+    </script>
     <?php
+    break;
+  }
+  case 'menu/order':{
+    ?>
+    <?php
+    break;
   }
   default:{
     ?>
     <script src="<?=admin_template_asset_path()?>/assets/lib/jquery-ui.min.js"></script> 
-    <script src="<?=admin_template_asset_path()?>/assets/lib/fullcalendar/fullcalendar.min.js"></script>
     <script>
       $(function() {
         dashboard();

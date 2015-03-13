@@ -10,43 +10,48 @@
   <!--IE Compatibility modes-->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="msapplication-TileColor" content="#5bc0de">
-  <meta name="msapplication-TileImage" content="<?=admin_template_asset_path()?>/assets/img/metis-tile.png">
-
-  <!-- Bootstrap -->
+<!--   <meta name="msapplication-TileImage" content="<?=admin_template_asset_path()?>/assets/img/metis-tile.png">
+  
+  Bootstrap
   <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/bootstrap/css/bootstrap.min.css">
-
-  <!-- Font Awesome -->
+  
+  Font Awesome
   <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/Font-Awesome/css/font-awesome.min.css">
-
-  <?php 
+  
+   -->  <?php 
   switch (uri_string()) {
     case 'add':{
       ?>
-      <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/wysihtml5/dist/bootstrap-wysihtml5-0.0.2.css">
+<!--       <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/wysihtml5/dist/bootstrap-wysihtml5-0.0.2.css">
       <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/Markdown.Editor.hack.css">
       <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/cleditor/jquery.cleditor.css">
       <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/jquery.cleditor-hack.css">
       <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/bootstrap-wysihtml5-hack.css">
-      <?php 
+       -->      <?php 
       break;
     } 
   }
   ?>
 
   <!-- Metis core stylesheet -->
-  <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/main.min.css">
+  <!-- <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/main.min.css">
   <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/theme.css">
-
-
+  
+  
   <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/elfinder/css/elfinder.min.css">
   <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/elfinder/css/theme.css">
   <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/elfinder.css">
   <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/flick/jquery-ui.min.css">
-
-
-  <!-- my CSS - Include with every page -->
+  
+  
+  my CSS - Include with every page
   <link href="<?=admin_template_asset_path()?>/assets/css/my.css" rel="stylesheet">
-
+  
+  
+   -->
+   <script src="<?=admin_template_asset_path()?>/assets/lib/jquery.min.js"></script>
+  <script src="<?=base_url()?>/assets/nestable/jquery.mjs.nestedSortable.js"></script>
+  
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

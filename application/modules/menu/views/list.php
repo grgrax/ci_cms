@@ -1,6 +1,5 @@
 <?php 
 $CI =& get_instance();
-
 ?>
 <div class="panel panel-default">
     <div class="panel-heading">Menus</div>
@@ -133,8 +132,8 @@ function GenerateTableRowHTML($row,$child=FALSE,$dashes=0)
                 $dashes=count($child['children']);
                 $str .=GenerateTableRowHTML($child['children'],TRUE,$dashes);               
             }
-        }
         $str .="</tr>". PHP_EOL;
+        }
     }
     return $str;
 }
