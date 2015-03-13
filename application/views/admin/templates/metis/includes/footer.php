@@ -28,6 +28,8 @@
 <script src="<?=admin_template_asset_path()?>/assets/js/main.js"></script>
 <script src="<?=admin_template_asset_path()?>/assets/lib/jquery-ui.min.js"></script>
 
+
+
 <?php 
 echo uri_string();
 switch (uri_string()) {
@@ -66,6 +68,9 @@ switch (uri_string()) {
   }
   case 'menu/order':{
     ?>
+    <script src="<?=base_url()?>/assets/js/jquery/jquery-1.10.2.js"></script>
+    <script src="<?=base_url()?>/assets/nestable/jquery-ui-1.9.1.custom.min.js"></script>
+    <script src="<?=base_url()?>/assets/nestable/jquery.mjs.nestedSortable.js"></script>
     <?php
     break;
   }

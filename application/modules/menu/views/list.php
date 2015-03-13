@@ -18,7 +18,7 @@ $CI =& get_instance();
             <tbody>
                 <?
                 if ($rows && count($rows) > 0) {
-                    echo GenerateTableRowHTML($rows);
+                    echo GenerateTableRowHTML($rows,$link);
                 } else {
                     ?>
                     <tr>
@@ -45,10 +45,9 @@ $CI =& get_instance();
 
 
 <?php 
-function GenerateTableRowHTML($row,$child=FALSE,$dashes=0)
+function GenerateTableRowHTML($row,$link=null,$child=FALSE,$dashes=0)
 {
     global $CI;
-    global $link;
     if(count($row)){
         $str="<tr>";
         foreach ($row as $child) {
@@ -118,11 +117,8 @@ function GenerateTableRowHTML($row,$child=FALSE,$dashes=0)
             if(permission_permit(array('edit-menu'))) { 
                 $str .=anchor("$link/edit/".$child['slug'], 'Edit', 'attributes');
             }
-            if(count($actions)>0) 
-                $str .=" / "; 
             foreach ($actions as $k=>$action) { 
-                $action =$k>0? $action. " / ":$action;
-                $str .=anchor("$link/edit/".$child['slug'], $action, 'attributes');
+                $str .=anchor("$link/$action/".$child['slug'], " / ".$action, 'attributes');
             }
             $str .="</td>". PHP_EOL;
             //action
@@ -130,7 +126,7 @@ function GenerateTableRowHTML($row,$child=FALSE,$dashes=0)
             if(isset($child['children']) && count($child['children'])){
                 $p=10+5+$dashes;
                 $dashes=count($child['children']);
-                $str .=GenerateTableRowHTML($child['children'],TRUE,$dashes);               
+                $str .=GenerateTableRowHTML($child['children'],$link,TRUE,$dashes);               
             }
         $str .="</tr>". PHP_EOL;
         }

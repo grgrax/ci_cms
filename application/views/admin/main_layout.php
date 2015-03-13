@@ -112,6 +112,6 @@ function template_validation(){
 
 
 <?php 
-//require_once($path."/includes/footer.php"); 
+require_once($path."/includes/footer.php"); 
 ?>
 
