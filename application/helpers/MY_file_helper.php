@@ -18,6 +18,10 @@ function get_relative_upload_file_path(){
 	return "./uploads/files/pics/";
 }
 
+function get_relative_upload_video_path(){
+	return "./uploads/files/videos/";
+}
+
 function upload_picture($path=null,$file_input_name=null){
 	$ci=& get_instance();
 	if($path && $file_input_name){
@@ -31,6 +35,27 @@ function upload_picture($path=null,$file_input_name=null){
 		{
 			$data['error']=$ci->upload->display_errors();
 			throw new Exception("Could not upload picture <hr/>".$data['error']);
+		}
+		else{
+			$data['success'] = array('upload_data' => $ci->upload->data());
+		}			
+	}
+}
+
+function upload_video($path=null,$file_input_name=null){
+	$ci=& get_instance();
+	if($path && $file_input_name){
+		$config['upload_path'] = $path;
+		$config['allowed_types'] = 'mp3|mp4|3gp|flv';
+		$config['max_size']	= '25000';
+		/*$config['max_width']  = '1024';
+		$config['max_height']  = '768';
+		*/
+		$ci->load->library('upload', $config);
+		if ( ! $ci->upload->do_upload($file_input_name))
+		{
+			$data['error']=$ci->upload->display_errors();
+			throw new Exception("Could not upload video <hr/>".$data['error']);
 		}
 		else{
 			$data['success'] = array('upload_data' => $ci->upload->data());
