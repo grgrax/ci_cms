@@ -79,7 +79,6 @@
 <script src="<?=base_url()?>assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 <script type="text/javascript">
 	$(function(){
-		console.log("im in");
 		$('#modal-id').modal({keyboard:false});
 	})
 </script>
