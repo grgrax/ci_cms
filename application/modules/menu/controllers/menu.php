@@ -87,16 +87,23 @@ class menu extends Admin_Controller
 				$this->form_validation->set_rules($this->menu_m->set_rules());
 				if($this->form_validation->run($this)===TRUE)
 				{
+
 					$this->template_data['update_data']=array(
 						'name'=>$this->input->post('name'),
+						'slug'=>get_slug($this->input->post('name')),
 						'desc'=>$this->input->post('desc'),
 						'status'=>$this->input->post('status'),
 						);
-					$parent=$this->input->post('parent_menu')?$this->input->post('parent_menu'):NULL;
-					$this->template_data['update_data']['parent_id']=$parent;
-					
-					if($this->input->post('page_type')>=0)
+					if($this->input->post('parent_menu')){
+						$this->template_data['update_data']['parent_id']=$this->input->post('parent_menu');
+					}
+					if($this->input->post('page_type'))
 						$this->template_data['update_data']['page_type_id']=$this->input->post('page_type');
+					if($this->input->post('category'))
+						$this->template_data['update_data']['category_id']=$this->input->post('page_type');
+					if($this->input->post('article'))
+						$this->template_data['update_data']['article_id']=$this->input->post('page_type');
+
 					$this->menu_m->update_row($response['data']['id'],$this->template_data['update_data']);
 					$this->session->set_flashdata('success', 'menu updated successfully');
 					$this->controller_redirect();				
