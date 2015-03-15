@@ -3,13 +3,13 @@ $CI =& get_instance();
 ?>
 <div class="panel panel-default">
     <div class="panel-heading">Menus</div>
-    <div class="panel-body">
+    <div class="panel-body table-responsive">
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th width="20%">name</th>
-                    <th>type</th>
+                    <th width="25%">name</th>
+                    <th width="10%">type</th>
                     <th>content</th>
                     <th>status</th>
                     <th>actions</th>

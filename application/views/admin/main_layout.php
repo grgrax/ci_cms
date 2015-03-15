@@ -94,7 +94,6 @@ function template_validation(){
 <?php if(config_item('admin_template')=='metis') { ?>
 <!-- template charisma  starts-->
 <!-- subview -->
-<div id="content">
   <div class="outer">
     <div class="inner">
       <?php template_validation()?>
@@ -105,7 +104,6 @@ function template_validation(){
       <?php $this->load->view($subview);?>
     </div>
   </div>
-</div>
 <!-- subview ends -->
 <!-- template charisma  ends-->
 <?php }?>

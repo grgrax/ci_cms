@@ -21,7 +21,8 @@
       <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/wysihtml5/dist/bootstrap-wysihtml5-0.0.2.css">
       <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/Markdown.Editor.hack.css">
       <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/cleditor/jquery.cleditor.css">
-      <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/jquery.cleditor-hack.css">
+      <!-- <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/jquery.cleditor-hack.css">
+       -->
       <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/bootstrap-wysihtml5-hack.css">
       <?php 
       break;
@@ -40,12 +41,11 @@
   <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/flick/jquery-ui.min.css">
 
 
-  my CSS - Include with every page
   <link href="<?=admin_template_asset_path()?>/assets/css/my.css" rel="stylesheet">
 
 
--->
 <script src="<?=admin_template_asset_path()?>/assets/lib/jquery.min.js"></script>
+
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 

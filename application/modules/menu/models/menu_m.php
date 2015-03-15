@@ -91,6 +91,7 @@ class menu_m extends CI_Model
 	{
 		$this->db->select();
 		$this->db->from($this->table);
+		$this->db->where("status != ",self::DELETED);
 		$this->db->order_by("order", "asc");
 		$query = $this->db->get();
 		$menus=$query->result_array();
@@ -184,6 +185,7 @@ class menu_m extends CI_Model
 		try {
 			$this->db->where('id',$id);
 			$this->db->update($this->table,$data);
+			echo $this->db->last_query();
 		} catch (Exception $e) {
 			echo $e->getMessage();			
 		}

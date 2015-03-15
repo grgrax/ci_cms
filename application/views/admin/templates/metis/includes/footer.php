@@ -45,6 +45,10 @@ switch (uri_string()) {
     <?php 
     break;
   } 
+  case 'article/add':{
+  }
+  case 'article/edit':{
+  }
   case 'category/add':{
     ?>
     <script src="<?=admin_template_asset_path()?>/assets/lib/wysihtml5/lib/js/wysihtml5-0.3.0.min.js"></script>

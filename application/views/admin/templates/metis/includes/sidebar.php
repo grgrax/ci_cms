@@ -90,6 +90,11 @@
       <a href="<?=base_url()?>category">Categories</a>
     </li>
     <?php } ?>
+    <?php if(permission_permit(['administrator-article'])){?>
+    <li>
+      <a href="<?=base_url()?>article">Articles</a>
+    </li>
+    <?php } ?>
     <?php if(permission_permit(['administrator-testimonial'])){?>
     <li>
       <a href="<?=base_url()?>testimonial">Testinomials</a>

@@ -40,8 +40,8 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="page_type">Article</label>
-                    <select name="page_type" id="input" class="form-control capitalize">
+                    <label for="article">Article</label>
+                    <select name="article" id="input" class="form-control capitalize">
                         <option value="">Select</option>
                         <?php if(isset($row['article_id'])) { ?>
                         <?php foreach ($articles as $article) {?>
