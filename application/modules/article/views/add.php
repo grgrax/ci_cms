@@ -5,7 +5,6 @@
       <div class="form-group">
         <label for="category">Category</label>
         <select name="category" id="input" class="form-control capitalize">
-          <option value="">Select</option>
           <?php foreach ($categories as $category) {?>
           <option value="<?php echo $category['id'] ?>"><?php echo $category['name']?></option>
           <?php } ?>

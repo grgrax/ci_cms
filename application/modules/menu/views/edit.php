@@ -43,13 +43,14 @@
                     <label for="article">Article</label>
                     <select name="article" id="input" class="form-control capitalize">
                         <option value="">Select</option>
-                        <?php if(isset($row['article_id'])) { ?>
                         <?php foreach ($articles as $article) {?>
                         <option value="<?php echo $article['id'] ?>"                     
-                            <?php echo $article['id']==$row['article_id']?'selected':'';?>>
+                        <?php if(isset($row['article_id'])) { ?>
+                            <?php echo $article['id']==$row['article_id']?'selected':'';?>
+                        <?php } ?>  
+                            >                              
                             <?php echo $article['name']?>
                         </option>
-                        <?php } ?>
                         <?php } ?>
                     </select>
                 </div>                <div class="form-group">

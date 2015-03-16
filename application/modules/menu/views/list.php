@@ -8,7 +8,7 @@ $CI =& get_instance();
             <thead>
                 <tr>
                     <th>#</th>
-                    <th width="25%">name</th>
+                    <th width="20%">name</th>
                     <th width="15%">type</th>
                     <th>content</th>
                     <th width="5%">status</th>
@@ -68,7 +68,15 @@ function GenerateTableRowHTML($row,$link=null,$child=FALSE,$dashes=0)
             $str .="</td>". PHP_EOL;
 
             $str .="<td>";
-            $str .=$child['desc'];
+            if($child['category_id']){
+                $category=$CI->category_m->read_row($child['category_id']);
+                $str .="Category: ".anchor(base_url('category/edit/'.$category['name']), $category['name']);
+                $str .=" --- ";
+            }
+            if($child['article_id']){
+                $article=$CI->article_m->read_row($child['article_id']);
+                $str .="Article: ".anchor(base_url('article/edit/'.$article['name']), $article['name']);
+            }
             $str .="</td>". PHP_EOL;
 
             $str .="<td>";

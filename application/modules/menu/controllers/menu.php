@@ -10,12 +10,14 @@ class menu extends Admin_Controller
 		$this->load->model('menu_m');
 		$this->load->model('page/page_types_m');
 		$this->load->model('category/category_m');
+		$this->load->model('article/article_m');
+		
 		$this->template_data['page_m']=$this->menu_m;
 		$this->template_data['category_m']=$this->category_m;
+		$this->template_data['article_m']=$this->article_m;
 
 		$this->template_data['categories']=$this->category_m->read_all($this->category_m->count_rows());
-		//$this->template_data['articles']=$this->menu_m->read_all();
-		$this->template_data['articles']=array('id'=>1,'name'=>'a1');
+		$this->template_data['articles']=$this->article_m->read_all($this->article_m->count_rows());
 
 		$this->template_data['menu_m']=$this->menu_m;
 		$this->template_data['page_types_m']=$this->page_types_m;
