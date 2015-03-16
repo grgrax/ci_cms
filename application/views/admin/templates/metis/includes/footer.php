@@ -33,7 +33,11 @@
 <?php 
 uri_string();
 $uris=explode('/', uri_string());
-if(in_array('article',$uris) && in_array('edit',$uris)){
+if(
+    (in_array('article',$uris) && in_array('edit',$uris)) or 
+    (in_array('category',$uris) && in_array('edit',$uris))
+  )
+  {
   ?>
   <script src="<?=base_url()?>/assets/ckeditor/ckeditor.js"></script>
   <script>
