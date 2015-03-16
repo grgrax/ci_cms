@@ -150,3 +150,7 @@ ol.sortable {
 .tab-content{
 	padding-top: 10px;
 }
+/** nestable **/
+.ui-sortable li{
+	text-transform: capitalize;
+}
