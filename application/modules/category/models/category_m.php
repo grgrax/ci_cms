@@ -49,6 +49,7 @@ class category_m extends CI_Model
 	{
 		$this->db->select()
 		->from($this->table)
+		->where("status != ",self::DELETED)
 		->order_by('parent_id','asc')
 		->order_by('order','asc')
 		->limit($total,$start);
