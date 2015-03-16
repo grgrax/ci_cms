@@ -7,8 +7,8 @@
                         <th class="center">s.no</th>
                         <th>name</th>
                         <th>category</th>
-                        <th width="35%">content</th>
                         <th>image</th>
+                        <th>date</th>
                         <th>status</th>
                         <th>actions</th>
                     </tr>
@@ -53,14 +53,14 @@
                                     <a href="<?= $link ?>edit/<?= $row['slug'] ?>"/><?= word_limiter(convert_accented_characters($row['name']), 5) ?></a>
                                 </td>
                                 <td><?php echo $row['category_id']?category_name($row['category_id']):'';?></td>
-                                <td><?= word_limiter(convert_accented_characters($row['content']), 5) ?></td>
                                 <td>
                                     <?php if($row['image']!="") { ?>
                                     <img src="<?php echo is_picture_exists($article_m::file_path.$row['image']);?>" 
                                     class="img-responsive" width="70" height="30" title=<?php echo $row['image_title']?$row['image_title']:''?>>
                                     <?php } ?>
                                 </td>
-                                <td><?php echo $row['status']==1?"yes":'no';?></td>
+                                <td><?php echo $row['updated_at']?format($row['updated_at'])."<br/>Updated":format($row['created_at'])."<br/>Published";?></td>
+                                <td><?php echo $row['status'];?></td>
                                 <td>
                                     <?php if(permission_permit(array('edit-article'))) { ?>
                                     <a href="<?= $link ?>view/<?= $row['slug'] ?>"/> View </a>

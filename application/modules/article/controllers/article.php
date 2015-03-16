@@ -14,8 +14,8 @@ class article extends Admin_Controller
 		$this->template_data['category_m']=$this->category_m;
 		$this->template_data['actions']=article_m::actions();
 		$this->template_data['link']=base_url().self::MODULE;
-        $this->template_data['categories']=$this->category_m->read_all($this->category_m->count_rows());
-        $this->template_data['rows']=$this->article_m->read_all($this->article_m->count_rows());
+		$this->template_data['categories']=$this->category_m->read_all($this->category_m->count_rows());
+		$this->template_data['rows']=$this->article_m->read_all($this->article_m->count_rows());
 		$this->breadcrumb->append_crumb('List Articles',base_url().self::MODULE.'index');
 	}
 
@@ -54,34 +54,34 @@ class article extends Admin_Controller
 						'category_id'=>$this->input->post('category'),
 						'name'=>$this->input->post('name'),
 						'slug'=>get_slug($this->input->post('name')),
-						// 'url'=>$this->input->post('url')?$this->input->post('url'):NULL,
 						'content'=>$this->input->post('content'),
-						'image'=>$_FILES['image']['name']?$_FILES['image']['name']:NULL,
 						'image_title'=>$this->input->post('image_title')?$this->input->post('image_title'):NULL,
-						'video'=>$_FILES['video']['name']?$_FILES['video']['name']:NULL,
 						'video_title'=>$this->input->post('video_title')?$this->input->post('video_title'):NULL,
 						'embed_code'=>$this->input->post('embed_code')?$this->input->post('embed_code'):NULL,
 						'meta_desc'=>$this->input->post('meta_description')?$this->input->post('meta_description'):NULL,
 						'meta_key'=>$this->input->post('meta_keywords')?$this->input->post('meta_keywords'):NULL,
 						'meta_robots'=>$this->input->post('meta_robots')?$this->input->post('meta_robots'):NULL,
 						'author'=>$current_user['id'],
-                        'status'=>0,
+						'status'=>0,
 						);
-					$path=get_relative_upload_file_path();
-					$path.=article_m::file_path;
-					$video_path=get_relative_upload_video_path();
-					$video_path.=article_m::file_path;
-					if($_FILES['image']['name'])
+					if($_FILES['image']['name']){
+						$this->template_data['update_data']['image']=$_FILES['image']['name'];
+						$path=get_relative_upload_file_path();
+						$path.=article_m::file_path;
 						upload_picture($path,'image');
-					if($_FILES['video']['name'])
+					}
+					if($_FILES['video']['name']){
+						$this->template_data['update_data']['video']=$_FILES['video']['name'];
+						$video_path=get_relative_upload_video_path();
+						$video_path.=article_m::file_path;
 						upload_video($video_path,'video');
-					$this->article_m->create_row($this->template_data['insert_data']);
+					}$this->article_m->create_row($this->template_data['insert_data']);
 					$this->session->set_flashdata('success', 'article added successfully');
 					$this->controller_redirect();				
 				}
 			}			
 			$this->breadcrumb->append_crumb('Add','add');
-            $this->template_data['subview']=self::MODULE.'add';
+			$this->template_data['subview']=self::MODULE.'add';
 			$this->load->view('admin/main_layout',$this->template_data);
 		} catch (Exception $e) {
 			$this->session->set_flashdata('error', 'Couldnt add article '.$e->getMessage());
@@ -108,28 +108,30 @@ class article extends Admin_Controller
 						'category_id'=>$this->input->post('category'),
 						'name'=>$this->input->post('name'),
 						'slug'=>get_slug($this->input->post('name')),
-						// 'url'=>$this->input->post('url')?$this->input->post('url'):NULL,
 						'content'=>$this->input->post('content'),
-						'image'=>$_FILES['image']['name']?$_FILES['image']['name']:NULL,
 						'image_title'=>$this->input->post('image_title')?$this->input->post('image_title'):NULL,
-						'video'=>$_FILES['video']['name']?$_FILES['video']['name']:NULL,
 						'video_title'=>$this->input->post('video_title')?$this->input->post('video_title'):NULL,
 						'video_url'=>$this->input->post('video_url')?$this->input->post('video_url'):NULL,
 						'embed_code'=>$this->input->post('embed_code')?$this->input->post('embed_code'):NULL,
 						'meta_desc'=>$this->input->post('meta_description')?$this->input->post('meta_description'):NULL,
 						'meta_key'=>$this->input->post('meta_keywords')?$this->input->post('meta_keywords'):NULL,
 						'meta_robots'=>$this->input->post('meta_robots')?$this->input->post('meta_robots'):NULL,
+						'updated_at'=>date('Y-m-d H:i:s'),
 						'modified_by'=>$current_user['id'],
-                        // 'status'=>0,
 						);
-					$path=get_relative_upload_file_path();
-					$path.=article_m::file_path;
-					if($_FILES['image']['name'])
+
+					if($_FILES['image']['name']){
+						$this->template_data['update_data']['image']=$_FILES['image']['name'];
+						$path=get_relative_upload_file_path();
+						$path.=article_m::file_path;
 						upload_picture($path,'image');
-					$video_path=get_relative_upload_video_path();
-					$video_path.=article_m::file_path;
-					if($_FILES['video']['name'])
+					}
+					if($_FILES['video']['name']){
+						$this->template_data['update_data']['video']=$_FILES['video']['name'];
+						$video_path=get_relative_upload_video_path();
+						$video_path.=article_m::file_path;
 						upload_video($video_path,'video');
+					}
 					$this->article_m->update_row($id,$this->template_data['update_data']);
 					$this->session->set_flashdata('success', 'article updated successfully');
 					$this->controller_redirect();				
@@ -152,7 +154,7 @@ class article extends Admin_Controller
 			if(!$slug) throw new Exception('Invalid paramter');
 			$response=$this->get($slug);
 			if(!$response['success']) throw new Exception($response['data'], 1);
-			$this->template_data=array('published'=>article_m::PUBLISHED);
+			$this->template_data=array('status'=>article_m::PUBLISHED);
 			$this->article_m->update_row($response['data']['id'],$this->template_data);
 			$this->session->set_flashdata('success', 'article published successfully');
 		}
@@ -168,7 +170,7 @@ class article extends Admin_Controller
 			if(!permission_permit(array('block-article'))) $this->controller_redirect('Permissioin Denied');
 			$response=$this->get($slug);
 			if(!$response['success']) throw new Exception($response['data'], 1);
-			$this->template_data=array('published'=>article_m::UNPUBLISHED);
+			$this->template_data=array('status'=>article_m::UNPUBLISHED);
 			$this->article_m->update_row($response['data']['id'],$this->template_data);
 			$this->session->set_flashdata('success', 'article unpublished successfully');
 		}
@@ -201,8 +203,8 @@ class article extends Admin_Controller
 			$response=$this->get($slug);
 			if(!$response['success']) throw new Exception($response['data'], 1);
 			$this->breadcrumb->append_crumb('View','view');
-	        $this->template_data['row']=$response['data'];			
-            $this->template_data['subview']=self::MODULE.'view';
+			$this->template_data['row']=$response['data'];			
+			$this->template_data['subview']=self::MODULE.'view';
 			$this->load->view('admin/main_layout',$this->template_data);
 		}
 		catch(Exception $e){

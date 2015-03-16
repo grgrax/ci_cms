@@ -14,6 +14,10 @@ function get_upload_pic_path(){
 	return $path=get_upload_file_path()."pics/";
 }
 
+function get_upload_video_path(){
+	return $path=get_upload_file_path()."videos/";
+}
+
 function get_relative_upload_file_path(){
 	return "./uploads/files/pics/";
 }
@@ -71,7 +75,21 @@ function is_picture_exists($pic){
 		if(file_exists($file)){
 			return $file;
 		}
+		return false;
 	}
 }
 
+function is_video_exists($pic){
+	if($pic){
+		$path=get_upload_video_path();
+		$file=$path.$pic;
+		return $file;
+		if(file_exists($file)){
+			return $file;
+		}
+		else
+			echo "nf";
+		// return false;
+	}
+}
 ?>

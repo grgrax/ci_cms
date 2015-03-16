@@ -31,7 +31,20 @@
 
 
 <?php 
-echo uri_string();
+uri_string();
+$uris=explode('/', uri_string());
+if(in_array('article',$uris) && in_array('edit',$uris)){
+  ?>
+  <script src="<?=base_url()?>/assets/ckeditor/ckeditor.js"></script>
+  <script>
+    CKEDITOR.replace( 'ckeditor', {
+      customConfig: 'web/custom/custom_config.js'
+    } );
+  </script>
+  <?php
+}
+else
+  echo "not found";
 switch (uri_string()) {
   case 'filemanager':{
     ?>
@@ -46,8 +59,6 @@ switch (uri_string()) {
     break;
   } 
   case 'article/add':{
-  }
-  case 'article/edit':{
   }
   case 'category/add':{
     ?>
