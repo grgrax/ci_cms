@@ -18,7 +18,7 @@
             </div>
             <div class="form-group">
                 <label for="content">Content</label>
-                <textarea name="content" class="form-control tinymce" 
+                <textarea name="content" class="form-control" id="ckeditor" 
                 placeholder="category content here"><?php echo set_value('content',$row['content']); ?></textarea>
             </div>
             <div class="form-group">
