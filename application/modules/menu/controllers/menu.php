@@ -56,7 +56,7 @@ class menu extends Admin_Controller
 					if($this->input->post('parent_menu')){
 						$this->template_data['insert_data']['parent_id']=$this->input->post('parent_menu');
 					}
-					if($this->input->post('page_type')>=0)
+					if($this->input->post('page_type'))
 						$this->template_data['insert_data']['page_type_id']=$this->input->post('page_type');
 					$this->menu_m->create_row($this->template_data['insert_data']);
 					$this->session->set_flashdata('success', 'menu added successfully');
