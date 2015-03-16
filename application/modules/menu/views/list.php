@@ -9,9 +9,9 @@ $CI =& get_instance();
                 <tr>
                     <th>#</th>
                     <th width="25%">name</th>
-                    <th width="10%">type</th>
+                    <th width="15%">type</th>
                     <th>content</th>
-                    <th>status</th>
+                    <th width="5%">status</th>
                     <th>actions</th>
                 </tr>
             </thead>
