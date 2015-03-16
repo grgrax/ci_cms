@@ -3,7 +3,7 @@
         <div class="panel-heading">Edit article Details</div>
         <div class="panel-body">
             <div class="form-group">
-                <label for="category">Parent article</label>
+                <label for="category">Category</label>
                 <select name="category" id="input" class="form-control capitalize">
                     <option value="">Select</option>
                     <?php foreach ($categories as $r) {?>
