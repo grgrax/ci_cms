@@ -14,7 +14,6 @@
             <div class="form-group">
                 <label for="page_type">Type</label>
                 <select name="page_type" id="input" class="form-control capitalize">
-                    <option value="">Select</option>
                     <?php foreach ($page_types as $page_type) {?>
                     <option value="<?php echo $page_type['id'] ?>"><?php echo $page_type['name']?></option>
                     <?php } ?>
