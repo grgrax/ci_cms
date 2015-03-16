@@ -76,10 +76,10 @@ const file_path='articles/';
 
 public static function status($key=null){
 	$status=array(
-		self::PUBLISHED=>'PUBLISHED',
-		self::UNPUBLISHED=>'UNPUBLISHED',
-		self::BLOCKED=>'BLOCKED',
-		self::DELETED=>'DELETED',
+		self::PUBLISHED=>'Published',
+		self::UNPUBLISHED=>'Unpublished',
+		self::BLOCKED=>'Blocked',
+		self::DELETED=>'Deleted',
 		);
 	if(isset($key)) return $status[$key];
 	return $status;
@@ -103,6 +103,7 @@ function read_all($total=0,$start=0)
 {
 	$this->db->select()
 	->from($this->table)
+	->where("status != ",self::DELETED)
 	->limit($total,$start);
 	$rs=$this->db->get();
 	return $rs->result_array();				 
