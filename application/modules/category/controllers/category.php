@@ -214,6 +214,8 @@ class category extends Admin_Controller
 		if(!$slug) return $response;
 		$category=$this->category_m->read_row_by_slug($slug);
 		if($category) {
+			if(in_array($category['slug'],array('sliders','partners','faculty','courses'))) 
+				continue;
 			$response['success']=true;
 			$response['data']=$category;
 		}

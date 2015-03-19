@@ -22,26 +22,26 @@
       <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/Markdown.Editor.hack.css">
       <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/cleditor/jquery.cleditor.css">
       <!-- <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/jquery.cleditor-hack.css">
-       -->
-      <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/bootstrap-wysihtml5-hack.css">
-      <?php 
-      break;
-    } 
-  }
-  ?>
+    -->
+    <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/bootstrap-wysihtml5-hack.css">
+    <?php 
+    break;
+  } 
+}
+?>
 
-  <!-- Metis core stylesheet -->
-  <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/main.min.css">
-  <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/theme.css">
-
-
-  <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/elfinder/css/elfinder.min.css">
-  <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/elfinder/css/theme.css">
-  <link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/elfinder.css">
-  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/flick/jquery-ui.min.css">
+<!-- Metis core stylesheet -->
+<link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/main.min.css">
+<link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/theme.css">
 
 
-  <link href="<?=admin_template_asset_path()?>/assets/css/my.css" rel="stylesheet">
+<link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/elfinder/css/elfinder.min.css">
+<link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/elfinder/css/theme.css">
+<link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/elfinder.css">
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/flick/jquery-ui.min.css">
+
+
+<link href="<?=admin_template_asset_path()?>/assets/css/my.css" rel="stylesheet">
 
 
 <script src="<?=admin_template_asset_path()?>/assets/lib/jquery.min.js"></script>
@@ -74,7 +74,7 @@
             <span class="icon-bar"></span> 
             <span class="icon-bar"></span> 
           </button>
-          <a href="index.html" class="navbar-brand">
+          <a href="<?=base_url()?>" class="navbar-brand">
             <img src="<?=admin_template_asset_path()?>/assets/img/logo.png" alt="">
           </a> 
         </header>
@@ -119,6 +119,9 @@
           <!-- .nav -->
           <ul class="nav navbar-nav">
             <li> <a href="<?=base_url()?>filemanager">File Manager</a></li>
+            <?php if(permission_permit(['list-setting'])) {?>
+            <li> <a href="<?=base_url()?>setting">Settings</a></li>
+            <?php } ?>
             <li class='dropdown '>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Form Elements

@@ -55,6 +55,7 @@
                                 </td>
                                 <td><?php echo $row['published']==1?"yes":'no';?></td>
                                 <td>
+                                    <?php if(in_array($row['slug'],array('sliders','partners','faculty','courses'))) continue; ?>
                                     <?php if(permission_permit(array('edit-category'))) { ?>
                                     <a href="<?= $link ?>edit/<?= $row['slug'] ?>"/>Edit </a>
                                     <?php if(count($actions)>0) echo "/" ?>
