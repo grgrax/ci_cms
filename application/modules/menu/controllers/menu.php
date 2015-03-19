@@ -16,8 +16,8 @@ class menu extends Admin_Controller
 		$this->template_data['category_m']=$this->category_m;
 		$this->template_data['article_m']=$this->article_m;
 
-		$this->template_data['categories']=$this->category_m->read_all($this->category_m->count_rows());
-		$this->template_data['articles']=$this->article_m->read_all($this->article_m->count_rows());
+		$this->template_data['categories']=$this->category_m->read_all_published($this->category_m->count_rows());
+		$this->template_data['articles']=$this->article_m->read_all_published($this->article_m->count_rows());
 
 		$this->template_data['menu_m']=$this->menu_m;
 		$this->template_data['page_types_m']=$this->page_types_m;
@@ -52,11 +52,14 @@ class menu extends Admin_Controller
 						'name'=>$this->input->post('name'),
 						'slug'=>get_slug($this->input->post('name')),
 						'desc'=>$this->input->post('desc'),
-						'status'=>0,
+						'status'=>1,
 						'order'=>$this->menu_m->count_rows()+1,
 						);
 					if($this->input->post('parent_menu')){
 						$this->template_data['insert_data']['parent_id']=$this->input->post('parent_menu');
+						$parent=$this->menu_m->read_row($this->input->post('parent_menu'));
+						if($parent)
+							$this->template_data['insert_data']['level']=$parent['level']+1;
 					}
 					if($this->input->post('page_type'))
 						$this->template_data['insert_data']['page_type_id']=$this->input->post('page_type');
@@ -102,9 +105,9 @@ class menu extends Admin_Controller
 					if($this->input->post('page_type'))
 						$this->template_data['update_data']['page_type_id']=$this->input->post('page_type');
 					if($this->input->post('category'))
-						$this->template_data['update_data']['category_id']=$this->input->post('page_type');
+						$this->template_data['update_data']['category_id']=$this->input->post('category');
 					if($this->input->post('article'))
-						$this->template_data['update_data']['article_id']=$this->input->post('page_type');
+						$this->template_data['update_data']['article_id']=$this->input->post('article');
 
 					$this->menu_m->update_row($response['data']['id'],$this->template_data['update_data']);
 					$this->session->set_flashdata('success', 'menu updated successfully');

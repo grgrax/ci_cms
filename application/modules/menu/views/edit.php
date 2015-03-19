@@ -29,13 +29,11 @@
                     <label for="category">Category</label>
                     <select name="category" id="input" class="form-control capitalize">
                         <option value="0">Select</option>
-                        <?php if(isset($row['category_id'])) { ?>
                         <?php foreach ($categories as $category) {?>
-                        <option value="<?php echo $menu['id'] ?>"
+                        <option value="<?php echo $category['id'] ?>"
                             <?php echo $category['id']==$row['category_id']?'selected':'';?>>
                             <?php echo $category['name']?>
                         </option>
-                        <?php } ?>
                         <?php } ?>
                     </select>
                 </div>

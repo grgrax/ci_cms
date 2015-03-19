@@ -19,7 +19,7 @@ class category extends Admin_Controller
 	function index($offset=0)
 	{
 		if(!permission_permit(['list-category'])) redirect_to_dashboard();
-		$per_page=10;
+		$per_page=20;
 		$total_rows=$this->category_m->count_rows();
 		$this->template_data['rows']=$this->category_m->read_all($per_page,$offset);
 		if($total_rows>$per_page){
@@ -43,6 +43,9 @@ class category extends Admin_Controller
 			if(!permission_permit(array('list-category','add-category'))) $this->controller_redirect('Permissioin Denied');
 			if($this->input->post())
 			{
+				// to do : handle duplicate name error
+				// show_pre($this->category_m->set_rules(array('status'),"add"));
+				// exit;
 				$this->form_validation->set_rules($this->category_m->set_rules(array('status')));
 				if($this->form_validation->run($this)===TRUE)
 				{
@@ -56,9 +59,9 @@ class category extends Admin_Controller
 						'image_title'=>$this->input->post('image_title'),
 						'url'=>$this->input->post('url'),
 						'order'=>$this->category_m->count_rows()+1,
-						'published'=>0,
+						'published'=>1,
                         'author'=>$current_user['id'],
-                        'status'=>0,
+                        'status'=>1,
 						);
 					$path=get_relative_upload_file_path();
 					$path.=category_m::file_path;
@@ -67,6 +70,8 @@ class category extends Admin_Controller
 					$this->category_m->create_row($this->template_data['insert_data']);
 					$this->session->set_flashdata('success', 'category added successfully');
 					$this->controller_redirect();				
+				}else{
+					throw new Exception("add");
 				}
 			}			
 			$this->breadcrumb->append_crumb('Add','add');
@@ -111,7 +116,7 @@ class category extends Admin_Controller
 					$this->controller_redirect();				
 				}
 				else{
-					throw new Exception("Could not add category <hr/>");
+					throw new Exception();
 				}
 			}			
 			$this->breadcrumb->append_crumb('Edit','edit');

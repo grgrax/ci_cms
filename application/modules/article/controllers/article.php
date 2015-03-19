@@ -22,7 +22,7 @@ class article extends Admin_Controller
 	function index($offset=0)
 	{
 		if(!permission_permit(['list-article'])) redirect_to_dashboard();
-		$per_page=10;
+		$per_page=20;
 		$total_rows=$this->article_m->count_rows();
 		$this->template_data['rows']=$this->article_m->read_all($per_page,$offset);
 		if($total_rows>$per_page){
@@ -62,20 +62,21 @@ class article extends Admin_Controller
 						'meta_key'=>$this->input->post('meta_keywords')?$this->input->post('meta_keywords'):NULL,
 						'meta_robots'=>$this->input->post('meta_robots')?$this->input->post('meta_robots'):NULL,
 						'author'=>$current_user['id'],
-						'status'=>0,
+						'status'=>1,
 						);
 					if($_FILES['image']['name']){
-						$this->template_data['update_data']['image']=$_FILES['image']['name'];
+						$this->template_data['insert_data']['image']=$_FILES['image']['name'];
 						$path=get_relative_upload_file_path();
 						$path.=article_m::file_path;
 						upload_picture($path,'image');
 					}
 					if($_FILES['video']['name']){
-						$this->template_data['update_data']['video']=$_FILES['video']['name'];
+						$this->template_data['insert_data']['video']=$_FILES['video']['name'];
 						$video_path=get_relative_upload_video_path();
 						$video_path.=article_m::file_path;
 						upload_video($video_path,'video');
-					}$this->article_m->create_row($this->template_data['insert_data']);
+					}
+					$this->article_m->create_row($this->template_data['insert_data']);
 					$this->session->set_flashdata('success', 'article added successfully');
 					$this->controller_redirect();				
 				}

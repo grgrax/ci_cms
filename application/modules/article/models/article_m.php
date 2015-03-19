@@ -104,7 +104,19 @@ function read_all($total=0,$start=0)
 	$this->db->select()
 	->from($this->table)
 	->where("status != ",self::DELETED)
+	->order_by("id","desc")
 	->limit($total,$start);
+	$rs=$this->db->get();
+	return $rs->result_array();				 
+}
+
+function read_all_published()
+{
+	$this->db->select()
+	->from($this->table)
+	->where("status != ",self::DELETED)
+	->where("status = ",self::PUBLISHED)
+	->order_by("id","desc");
 	$rs=$this->db->get();
 	return $rs->result_array();				 
 }

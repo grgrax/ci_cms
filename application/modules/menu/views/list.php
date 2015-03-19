@@ -8,8 +8,8 @@ $CI =& get_instance();
             <thead>
                 <tr>
                     <th>#</th>
+                    <th width="10%">type</th>
                     <th width="20%">name</th>
-                    <th width="15%">type</th>
                     <th>content</th>
                     <th width="5%">status</th>
                     <th>actions</th>
@@ -18,6 +18,7 @@ $CI =& get_instance();
             <tbody>
                 <?
                 if ($rows && count($rows) > 0) {
+                    $str='';
                     echo GenerateTableRowHTML($rows,$link);
                 } else {
                     ?>
@@ -45,100 +46,114 @@ $CI =& get_instance();
 
 
 <?php 
-function GenerateTableRowHTML($row,$link=null,$child=FALSE,$dashes=0)
+function GenerateTableRowHTML($rows,$link=null,$child=FALSE,$dashes=0)
 {
     global $CI;
-    if(count($row)){
-        $str="<tr>";
-        foreach ($row as $child) {
-            global $inc;
-            $px=$child['level']*2;
-            $px .=$px."px";
-            $style="padding-left:$px";
+    if(count($rows)){
+        foreach ($rows as $row) {
+            global $inc,$str;
+            $str .="<tr>";
+            foreach ($row as $column_key => $column_value) {
+                # code...
+                switch ($column_key) {
+                    case 'id':{
+                        $str .="<td>";
+                        $str .="</td>". PHP_EOL;
+                        break;
+                    }                    
+                    case 'name':{
+                        $px=$row['level']*3;
+                        $px .=$px."px";
+                        $style="padding-left:$px";
+                        $str .="<td><p style='".$style."'>";
+                        $str .=$row['name'];
+                        $str .="</p></td>". PHP_EOL;
+                        break;
+                    }                    
+                    case 'page_type_id':{
+                        $str .="<td>";
+                        $str .=$CI->page_types_m->read_row($row['page_type_id'])['name'];
+                        $str .="</td>";
+                        break;
+                    }                    
+                    case 'category_id':{
+                        $str .="<td>";
+                        if($row['category_id']){
+                            $category=$CI->category_m->read_row($row['category_id']);
+                            $str .="Category: ".anchor(base_url('category/edit/'.$category['slug']), $category['name']);
+                        }
+                    }                    
+                    case 'article_id':{
+                        if($row['article_id']){
+                            $article=$CI->article_m->read_row($row['article_id']);
+                            $str .=" Article: ".anchor(base_url('article/edit/'.$article['slug']), $article['name']);
+                        }
+                        $str .="</td>";
+                        break;
+                    }                    
+                    case 'status':{
+                        $str .="<td>";
+                        $str .=menu_m::status($row['status']);
+                        $str .="</td>". PHP_EOL;
+                        $str .="<td>";
+                        $alertClass="";
+                        $actions=array();
+                        switch($row['status']){
+                            case menu_m::PENDING:
+                            {
+                                $alertClass="";
+                                if(permission_permit(array('activate-menu'))) 
+                                    $actions=array('activate');
+                                break;
+                            }
+                            case menu_m::ACTIVE:
+                            {
+                                $alertClass="";
+                                if(permission_permit(array('block-menu'))) 
+                                    $actions[]='block';
+                                if(permission_permit(array('delete-menu'))) 
+                                    $actions[]='delete';
+                                break;
+                            }
+                            case menu_m::BLOCKED:
+                            {
+                                $alertClass="warning";
+                                if(permission_permit(array('activate-menu'))) 
+                                    $actions[]='activate';
+                                if(permission_permit(array('delete-menu'))) 
+                                    $actions[]='delete';
+                                break;
+                            }
+                            case menu_m::DELETED:
+                            {
+                                $alertClass="danger";
+                                if(permission_permit(array('activate-menu'))) 
+                                    $actions=array('activate');
+                                break;
+                            }
+                        }
 
-            $str .="<td>";
-            $str .="</td>". PHP_EOL;
-
-            $str .="<td><p style='".$style."'>";
-            $str .=$child['name'];
-            $str .="</p></td>". PHP_EOL;
-            
-            $str .="<td>";
-            $str .=$CI->page_types_m->read_row($child['page_type_id'])['name'];
-            $str .="</td>". PHP_EOL;
-
-            $str .="<td>";
-            if($child['category_id']){
-                $category=$CI->category_m->read_row($child['category_id']);
-                $str .="Category: ".anchor(base_url('category/edit/'.$category['name']), $category['name']);
-                $str .=" --- ";
-            }
-            if($child['article_id']){
-                $article=$CI->article_m->read_row($child['article_id']);
-                $str .="Article: ".anchor(base_url('article/edit/'.$article['name']), $article['name']);
-            }
-            $str .="</td>". PHP_EOL;
-
-            $str .="<td>";
-            $str .=menu_m::status($child['status']);
-            $str .="</td>". PHP_EOL;
-
-            //action
-            $alertClass="";
-            $actions=array();
-            switch($child['status']){
-                case menu_m::PENDING:
-                {
-                    $alertClass="";
-                    if(permission_permit(array('activate-menu'))) 
-                        $actions=array('activate');
-                    break;
+                        if(permission_permit(array('edit-menu'))) { 
+                            $str .=anchor("$link/edit/".$row['slug'], 'Edit', 'attributes');
+                        }
+                        foreach ($actions as $k=>$action) { 
+                            $str .=anchor("$link/$action/".$row['slug'], " / ".$action, 'attributes');
+                        }
+                        $str .="</td>". PHP_EOL;
+                        break;
+                    }                    
                 }
-                case menu_m::ACTIVE:
-                {
-                    $alertClass="";
-                    if(permission_permit(array('block-menu'))) 
-                        $actions[]='block';
-                    if(permission_permit(array('delete-menu'))) 
-                        $actions[]='delete';
-                    break;
-                }
-                case menu_m::BLOCKED:
-                {
-                    $alertClass="warning";
-                    if(permission_permit(array('activate-menu'))) 
-                        $actions[]='activate';
-                    if(permission_permit(array('delete-menu'))) 
-                        $actions[]='delete';
-                    break;
-                }
-                case menu_m::DELETED:
-                {
-                    $alertClass="danger";
-                    if(permission_permit(array('activate-menu'))) 
-                        $actions=array('activate');
-                    break;
-                }
             }
-
-            $str .="<td>";
-            if(permission_permit(array('edit-menu'))) { 
-                $str .=anchor("$link/edit/".$child['slug'], 'Edit', 'attributes');
-            }
-            foreach ($actions as $k=>$action) { 
-                $str .=anchor("$link/$action/".$child['slug'], " / ".$action, 'attributes');
-            }
-            $str .="</td>". PHP_EOL;
-            //action
-
-            if(isset($child['children']) && count($child['children'])){
+            $str .="</tr>". PHP_EOL;
+            if(isset($row['children']) && count($row['children'])){
                 $p=10+5+$dashes;
-                $dashes=count($child['children']);
-                $str .=GenerateTableRowHTML($child['children'],$link,TRUE,$dashes);               
+                $dashes=count($row['children']);
+                $str_child ="<tr>";
+                $str_child .=GenerateTableRowHTML($row['children'],$link,TRUE,$dashes);               
+                $str_child .="</tr>". PHP_EOL;
             }
-        $str .="</tr>". PHP_EOL;
         }
+        return $str;
     }
-    return $str;
 }
 ?>

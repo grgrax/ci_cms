@@ -47,7 +47,7 @@ class User_m extends MY_Model {
 		array(
 			'field'=>'email',
 			'label'=>'Email Address',
-			'rules'=>'trim|required|valid_email|unique[tbl_users.email]xss_clean'
+			'rules'=>'trim|required|valid_email|unique[tbl_users.email]|xss_clean'
 			),
 		);
 

@@ -6,7 +6,8 @@
                 <label for="parent_id">Parent category</label>
                 <select name="parent_id" id="input" class="form-control capitalize">
                     <option value="">Select</option>
-                    <?php foreach ($rows as $r) {?>
+                    <?php foreach ($rows as $r) { ?>
+                    <?php if($r['id']==$row['id']) continue; ?>
                     <option value="<?php echo $r['id'] ?>" <?php echo $r['id'] == $row['parent_id']?"selected":'';?>><?php echo $r['name']?></option>
                     <?php } ?>
                 </select>

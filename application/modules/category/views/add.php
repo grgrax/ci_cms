@@ -5,6 +5,7 @@
       <div class="form-group">
         <label for="parent_id">Parent category</label>
         <select name="parent_id" id="input" class="form-control capitalize">
+          <option value="">Select</option>
           <?php foreach ($rows as $row) {?>
           <option value="<?php echo $row['id'] ?>"><?php echo $row['name']?></option>
           <?php } ?>

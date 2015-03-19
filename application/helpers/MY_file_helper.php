@@ -35,7 +35,7 @@ function upload_picture($path=null,$file_input_name=null){
 		$config['max_width']  = '1024';
 		$config['max_height']  = '768';
 		$ci->load->library('upload', $config);
-		if ( ! $ci->upload->do_upload($file_input_name))
+		if (!$ci->upload->do_upload($file_input_name))
 		{
 			$data['error']=$ci->upload->display_errors();
 			throw new Exception("Could not upload picture <hr/>".$data['error']);

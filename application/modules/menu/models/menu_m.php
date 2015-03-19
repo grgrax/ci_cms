@@ -110,7 +110,8 @@ class menu_m extends CI_Model
 					if ($id) {
 						$data = array(
 							'parent_id' =>  $menu['parent_id']?$menu['parent_id']:NULL,
-							'order' => $order);
+							'order' => $order,
+							);
 						$this->db->set($data)->where('id',$id)->update($this->table);
 					}
 				}
@@ -153,7 +154,9 @@ class menu_m extends CI_Model
 	}	
 	function create_row($data)
 	{
-		$this->db->insert($this->table
+/*		show_pre($data);
+		exit;
+*/		$this->db->insert($this->table
 			,$data);
 	}
 	function read_row($id)
@@ -183,6 +186,8 @@ class menu_m extends CI_Model
 	function update_row($id,$data)
 	{
 		try {
+			show_pre($data);
+			//exit;
 			$this->db->where('id',$id);
 			$this->db->update($this->table,$data);
 			echo $this->db->last_query();
