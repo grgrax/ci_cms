@@ -121,6 +121,18 @@ function read_all_published()
 	return $rs->result_array();				 
 }
 
+function read_all_published_of_category($cat_id=null)
+{
+	$this->db->select()
+	->from($this->table)
+	->where("status != ",self::DELETED)
+	->where("status = ",self::PUBLISHED)
+	->where("category_id = ",$cat_id)
+	->order_by("id","desc");
+	$rs=$this->db->get();
+	return $rs->result_array();				 
+}
+
 function count_rows()
 {
 	$this->db->select()

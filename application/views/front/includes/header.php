@@ -11,19 +11,20 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/sl-slide.css">
+    <link rel="stylesheet" href="<?php echo front_template_path()?>css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo front_template_path()?>css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="<?php echo front_template_path()?>css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo front_template_path()?>css/main.css">
+    <link rel="stylesheet" href="<?php echo front_template_path()?>css/sl-slide.css">
+    <link rel="stylesheet" href="<?php echo front_template_path()?>css/custom.css">
 
-    <script src="./js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="<?php echo front_template_path()?>./js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="shortcut icon" href="<?php echo front_template_path()?>images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo front_template_path()?>images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo front_template_path()?>images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo front_template_path()?>images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head>
 
@@ -55,8 +56,8 @@
                         </div>
                     </div>
                     <ul class="nav">
-                        <li><a href="index.php">Home</a></li>
-                        <li><a href="about_us.php">About Us</a></li>
+                        <li><a href="<?php echo base_url()?>">Home</a></li>
+                        <li><a href="about-us">About Us</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Courses <i class="icon-angle-down"></i></a>
                             <ul class="dropdown-menu">                                
@@ -81,13 +82,13 @@
 
                             </ul>
                         </li>
-                        <li><a href="admission.php">Admission</a></li> 
+                        <li><a href="admission">Admission</a></li> 
 
-                        <li><a href="services.php">Services</a></li>
-                        <li><a href="news_events.php">News & Events</a></li>
-                        <li><a href="gallery.php">Gallery</a></li> 
-                        <li><a href="downloads.php">Downloads</a></li>
-                        <li><a href="contact_us.php">Contact</a></li>
+                        <li><a href="services">Services</a></li>
+                        <li><a href="news-events">News & Events</a></li>
+                        <li><a href="gallery">Gallery</a></li> 
+                        <li><a href="downloads">Downloads</a></li>
+                        <li><a href="contact-us">Contact</a></li>
                                               <!-- <li class="login">
                         <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
                     </li> -->

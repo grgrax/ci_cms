@@ -31,5 +31,10 @@ function admin_template_asset_path(){
 	return base_url().$path;
 }
 
+function front_template_path(){
+	$path="templates/front/";
+	return base_url().$path;
+}
+
 /* End of file cms_config.php */
 /* Location: ./application/config/cms_config.php */

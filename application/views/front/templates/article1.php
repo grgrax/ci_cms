@@ -1,9 +1,9 @@
-<?php show_pre($content)?>
-<h2><?php echo $article['name']?></h2>
-<?php echo $article['content']?>	
-
-<!-- admission -->
-<!-- <ul class="faq">
+<h2>artilce title</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus omnis ea ad, 
+	ratione nobis debitis voluptatibus, doloremque consequatur nemo quidem animi aut 
+	laudantium similique, placeat odio repellendus dicta culpa reprehenderit!	
+</p>
+<ul class="faq">
 	<li>
 		<span class="number">01</span>
 		<div>
@@ -54,5 +54,16 @@
 		</div>
 	</li>
 </ul>
- --><!-- admission -->
 
+
+<!-- <div class="span9">
+	<article>
+		<h2><?php echo e($article->title); ?></h2>
+		<p class="pubdate"><?php echo e($article->pubdate); ?></p>
+		<?php echo $article->body; ?> 
+	</article>
+</div>
+<div class="span3 sidebar">
+	<h2>Recent news</h2>
+	<?php $this->load->view('sidebar'); ?>
+</div> -->
