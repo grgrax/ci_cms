@@ -98,15 +98,16 @@ class menu extends Admin_Controller
 						'slug'=>get_slug($this->input->post('name')),
 						'desc'=>$this->input->post('desc'),
 						'status'=>$this->input->post('status'),
+						'category_id'=>$this->input->post('category')?$this->input->post('category'):NULL,
 						);
 					if($this->input->post('parent_menu')){
 						$this->template_data['update_data']['parent_id']=$this->input->post('parent_menu');
 					}
 					if($this->input->post('page_type'))
 						$this->template_data['update_data']['page_type_id']=$this->input->post('page_type');
-					if($this->input->post('category'))
+/*					if($this->input->post('category'))
 						$this->template_data['update_data']['category_id']=$this->input->post('category');
-					if($this->input->post('article'))
+*/					if($this->input->post('article'))
 						$this->template_data['update_data']['article_id']=$this->input->post('article');
 
 					$this->menu_m->update_row($response['data']['id'],$this->template_data['update_data']);

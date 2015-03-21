@@ -18,11 +18,14 @@ class front extends Frontend_Controller {
 		parent::__construct();
 	}
 
-	public function index()
+	public function index($menu_slug='home')
 	{
 		try {
-			$this->active_menu_slug=$this->uri->segment(1,'home');
+			// $this->active_menu_slug=$this->uri->segment(1,'home');
+			$this->active_menu_slug=$menu_slug;
 			if (!$this->active_menu_slug) throw new Exception();
+			$article_m=$this->load->model('article/article_m');
+			$category_m=$this->load->model('category/category_m');
 			switch ($this->active_menu_slug) {
 				case 'home':{
 					$this->_home();
@@ -33,7 +36,6 @@ class front extends Frontend_Controller {
 					break;				
 				}
 				default:{
-					$article_m=$this->load->model('article/article_m');
 					$response=$this->_read_from_model();
 					if(!$response['success']) throw new Exception($response['data'], 1);
 					$template_id=$response['data']['page_type_id'];
@@ -47,6 +49,9 @@ class front extends Frontend_Controller {
 						$this->data['articles']=$article_m->read_all_published_of_category($menu['category_id']);						
 					}
 					$this->active_template=$template['name'];
+					if($template['name']=='gallery'){
+						$this->data['categories']=$category_m->read_all_published_childs($menu['category_id']);						
+					}
 					break;
 				}
 			}
@@ -60,16 +65,6 @@ class front extends Frontend_Controller {
 */		
 		$this->data['subview']=$this->active_template;
 		$this->load->view('front/main_layout',$this->data);
-//exit;
-
-
-/*		
-		$this->template_data['subview']=self::MODULE.'index';
-		$this->load->view('front/main_layout',$this->template_data);
-		$this->data['page'] = $this->menu_m->get_by(array('slug' => (string) $this->uri->segment(1)), TRUE);
-		count($this->data['page']) || show_404(current_url());
-		add_meta_title($this->data['page']->title);
-*/	
 	}
 
 	public function _home(){

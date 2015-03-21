@@ -83,6 +83,20 @@ function read_all_published()
 	return $rs->result_array();				 
 }
 
+function read_all_published_childs($cat_id)
+{
+	$this->db->select()
+	->from($this->table)
+	->where("status != ",self::DELETED)
+	->where("published = ",self::PUBLISHED)
+	->where("parent_id = ",$cat_id)
+	->order_by('id','asc')
+	->order_by('order','asc');
+	$rs=$this->db->get();
+	return $rs->result_array();				 
+}
+
+
 	//order
 function read_categories_for_ordering()
 {

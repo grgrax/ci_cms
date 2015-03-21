@@ -40,9 +40,7 @@
 
 $route['default_controller'] = "front";
 $route['404_override'] = '';
-//$route['article/(:num)/(:any)'] = 'article/index/$1/$2';
-$route['dashboard'] = 'dashboard/index';
-$route['(:any)'] = 'front/index/$1';
+$route['front/(:any)'] = 'front/index/$1';
 
 
 /* End of file routes.php */

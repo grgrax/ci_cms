@@ -3,88 +3,31 @@
 <link rel="stylesheet" href="<?php echo front_template_path()?>assets/gallery/css/style.css">
 <!-- gallery end -->
 
-<?php //show_pre($categories) ?>
 <h2><?php echo $category['name']?></h2>
-<?php
-$show_gallery=false; 
-$total_articles=0; 
-$all_articles=array();
-if(isset($categories) && count($categories)) { 
-	foreach ($categories as $key=>$cat){
-		$articles=get_articles_of_category($cat['id']); 
-		$total_articles=$total_articles+count($articles);
-		if(count($articles)){
-			foreach ($articles as $article){
-				$show_gallery=true;
-				$all_articles[]=$article; 
-			}
-		}
-	}
-}	
-
-if($show_gallery){ ?>
 <div class="portfolio-container">   
 	<div class="container">
-		<?php $left=$top=0; ?>
-		<!-- albums header starts -->
 		<div class="row-fluid">
 			<div class="col-sm-12 portfolio-filters wow fadeInLeft">
 				<a href="#" class="filter-all active">All</a>  
-				<?php foreach ($categories as $cat) { ?>
-				<a href="#" class="filter-<?php echo $cat['slug']?>"><?php echo $cat['name']?></a>  
-				<?php } ?>
+				<a href="#" class="filter-web-design">Web Design</a>  
+				<a href="#" class="filter-logo-design">Logo Design</a>  
+				<a href="#" class="filter-print-design">Print Design</a>
 			</div>
 		</div>
-		<!-- albums header ends -->
-
 		<div class="row-fluid">
-			<div class="col-sm-12 portfolio-masonry" style="position: relative; height: 876px;">		
-
-				<!-- albums gallery (pictures & vdos) starts -->
-				<?php 
-				foreach ($all_articles as $key=>$article) 
-				{ 
-					$category=get_category_of_article($article['category_id']);
-					?>
-					<div 
-					class="portfolio-box <?php echo $category['slug']?>" 
-					style="position: absolute; left: <?php echo $left?>px; top: <?php echo $top?>px;">
-						<div class="portfolio-box-container">
-							<img src="<?php echo front_template_path()?>images/portfolio/work2.jpg" alt="" 
-							data-at2x="<?php echo front_template_path()?>images/portfolio/work2.jpg">
-							<div class="portfolio-box-text">
-								<h3><?php echo $article['name']?$article['name']:''?></h3>
-								<p>
-								<?php echo $article['content']?$article['content']:''?>.
-								</p>
-								<!-- <h5>
-								k:<?php echo $key?>--
-								w:<?php echo $left?>--
-								h:<?php echo $top?>--
-								</h5> -->
-							</div>
+			<div class="col-sm-12 portfolio-masonry" style="position: relative; height: 876px;">
+				
+				<div class="portfolio-box web-design" style="position: absolute; left: 0px; top: 0px;">
+					<div class="portfolio-box-container">
+						<img src="<?php echo front_template_path()?>images/portfolio/work1.jpg" alt="" data-at2x="<?php echo front_template_path()?>images/portfolio/work1.jpg">
+						<div class="portfolio-box-text">
+							<h3>Lorem Website</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
 						</div>
 					</div>
-					<?php 
-					$left=$left+291;
-					if($key!=0 && $key%3 == 0){
-						$left=0;
-						$top=$top+312; 
-					}
-				}
-				?>
-				<!-- albums gallery (pictures & vdos) ends -->
-
-			</div>
-		</div>
-
-	</div>
-</div>
-<? }// if show_gallery
-?>
-
-
-<!-- 				<div class="portfolio-box logo-design" style="position: absolute; left: 285px; top: 0px;">
+				</div>
+				
+				<div class="portfolio-box logo-design" style="position: absolute; left: 285px; top: 0px;">
 					<div class="portfolio-box-container">
 						<img class="portfolio-video" src="<?php echo front_template_path()?>images/portfolio/work2.jpg" alt="" data-at2x="<?php echo front_template_path()?>images/portfolio/work2.jpg" data-portfolio-video="http://vimeo.com/84910153?autoplay=0">
 						<i class="portfolio-box-icon fa fa-play"></i>
@@ -195,8 +138,30 @@ if($show_gallery){ ?>
 						</div>
 					</div>
 				</div>
-			-->				
+			</div>
 		</div>
 	</div>
 </div>
+
+
+
+<!-- news -->
+<? if(isset($articles) && count($articles)) { ?>
+<? foreach ($articles as $article) { ?>
+<div class="span12 category_article" id="news">
+	<div class="blog-item well" id="category_article_inner">
+		<h3><?php echo $article['name']?></h3>
+		<div class="blog-meta clearfix">
+			<p class="pull-left">
+				<i class="icon-calendar"></i> <?php echo format($article['created_at'])?>
+			</p>
+		</div>
+		<p><img src="<?php echo $article['image']?$article['image']:'<?php echo front_template_path()?>/sample/blog1.jpg'?>" width="100%" alt="" class="news"></p>
+		<?php echo $article['content']?>
+	</div>
 </div>
+<? } ?>
+<? } ?>
+<!-- news -->
+
+

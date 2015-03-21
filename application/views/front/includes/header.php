@@ -56,8 +56,8 @@
                         </div>
                     </div>
                     <ul class="nav">
-                        <li><a href="<?php echo base_url()?>">Home</a></li>
-                        <li><a href="about-us">About Us</a></li>
+                        <li><a href="<?php echo base_url('front')?>/">Home</a></li>
+                        <li><a href="<?php echo base_url('front')?>/about-us">About Us</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Courses <i class="icon-angle-down"></i></a>
                             <ul class="dropdown-menu">                                
@@ -82,13 +82,13 @@
 
                             </ul>
                         </li>
-                        <li><a href="admission">Admission</a></li> 
+                        <li><a href="<?php echo base_url('front')?>/admission">Admission</a></li> 
 
-                        <li><a href="services">Services</a></li>
-                        <li><a href="news-events">News & Events</a></li>
-                        <li><a href="gallery">Gallery</a></li> 
-                        <li><a href="downloads">Downloads</a></li>
-                        <li><a href="contact-us">Contact</a></li>
+                        <li><a href="<?php echo base_url('front')?>/services">Services</a></li>
+                        <li><a href="<?php echo base_url('front')?>/news-events">News & Events</a></li>
+                        <li><a href="<?php echo base_url('front')?>/gallery">Gallery</a></li> 
+                        <li><a href="<?php echo base_url('front')?>/downloads">Downloads</a></li>
+                        <li><a href="<?php echo base_url('front')?>/contact-us">Contact</a></li>
                                               <!-- <li class="login">
                         <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
                     </li> -->

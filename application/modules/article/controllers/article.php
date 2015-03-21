@@ -106,7 +106,7 @@ class article extends Admin_Controller
 				{
 					$current_user=current_loggedin_user();
 					$this->template_data['update_data']=array(
-						'category_id'=>$this->input->post('category'),
+						'category_id'=>$this->input->post('category')?$this->input->post('category'):NULL,
 						'name'=>$this->input->post('name'),
 						'slug'=>get_slug($this->input->post('name')),
 						'content'=>$this->input->post('content'),
