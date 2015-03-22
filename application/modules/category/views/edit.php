@@ -14,7 +14,7 @@
             <div class="form-group">
                 <label for="name">Name</label>
                 <input name="name" type="text" class="form-control" placeholder="category name here"
-                value="<?php echo set_value('name',$row['name']) ?>">
+                value="<?php echo set_value('name',$row['name']) ?>" <?php echo is_default($row['slug'])?'readonly':''?>>
             </div>
             <div class="form-group">
                 <label for="content">Content</label>

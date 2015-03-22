@@ -43,10 +43,14 @@ class category extends Admin_Controller
 			if(!permission_permit(array('list-category','add-category'))) $this->controller_redirect('Permissioin Denied');
 			if($this->input->post())
 			{
-				// to do : handle duplicate name error
-				// show_pre($this->category_m->set_rules(array('status'),"add"));
-				// exit;
-				$this->form_validation->set_rules($this->category_m->set_rules(array('status')));
+				$rules=$this->category_m->set_rules();
+				$name=array(
+					'field'=>'name',
+					'label'=>'Category Name',
+					'rules'=>'trim|required|is_unique[tbl_categories.name]|xss_clean'
+					);
+				array_push($rules,$name);
+				$this->form_validation->set_rules($rules);
 				if($this->form_validation->run($this)===TRUE)
 				{
 					$current_user=current_loggedin_user();
@@ -71,7 +75,7 @@ class category extends Admin_Controller
 					$this->session->set_flashdata('success', 'category added successfully');
 					$this->controller_redirect();				
 				}else{
-					throw new Exception("add");
+					throw new Exception(validation_error());
 				}
 			}			
 			$this->breadcrumb->append_crumb('Add','add');
@@ -95,7 +99,17 @@ class category extends Admin_Controller
 			
 			if($this->input->post())
 			{
-				$this->form_validation->set_rules($this->category_m->set_rules());
+				$rules=$this->category_m->set_rules();
+				$name=$this->input->post('name');
+				$name_rule=array(
+					'field'=>'name',
+					'label'=>'Category Name',
+					'rules'=>"trim|required|xss_clean|is_category_name_unique[$id]",
+					);
+				array_push($rules,$name_rule);
+				show_pre($rules);
+
+				$this->form_validation->set_rules($rules);
 				if($this->form_validation->run($this)===TRUE)
 				{
 					$this->template_data['update_data']=array(
@@ -109,16 +123,16 @@ class category extends Admin_Controller
 					$path.=category_m::file_path;
 					if($_FILES['image']['name'])
 						upload_picture($path,'image');
-					if(is_default($slug)){
-						$this->template_data['insert_data']['name']=$this->input->post('name');
-						$this->template_data['slug']['name']=get_slug($this->input->post('name'));
+					if(!is_default($slug)){
+						$this->template_data['update_data']['name']=$this->input->post('name');
+						$this->template_data['update_data']['slug']=get_slug($this->input->post('name'));
 					}
 					$this->category_m->update_row($id,$this->template_data['update_data']);
 					$this->session->set_flashdata('success', 'category updated successfully');
 					$this->controller_redirect();				
 				}
 				else{
-					throw new Exception();
+					throw new Exception(validation_errors());
 				}
 			}			
 			$this->breadcrumb->append_crumb('Edit','edit');

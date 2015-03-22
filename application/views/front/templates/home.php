@@ -1,69 +1,36 @@
-<?php 
-$data_slider=get_category_and_aritcles(HOME_PAGE_SLIDER); 
-show_pre($data_slider);
-exit;
-?>
+<?php $data_slider=get_category_and_aritcles(HOME_PAGE_SLIDER); ?>
 <?php if($data_slider) { ?>
 <!--Slider-->
 <section id="slide-show">
     <div id="slider" class="sl-slider-wrapper">
         <div class="sl-slider">
 
-            <div class="sl-slide item1" data-orientation="horizontal">
+
+            <?php foreach ($data_slider['rows'] as $key => $row) { ?>
+            <div class="sl-slide item1" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
                 <div class="sl-slide-inner">
                     <div class="container">
-                        <img class="pull-right" 
-                        src="http://localhost/cel/2015/mar/projects/mercy/ci_cms/templates/front/images/sample/slider/img3.jpg"
-                        alt=""/>
+                        <?php if($row['image'] && is_article_picture_exists($row['image'])){?>
+                        <img class="pull-right img-slider" src="<?php echo is_article_picture_exists($row['image'])?>" />
+                        <?php } else {?>
+                        <img class="pull-right img-slider" src="<?php echo is_article_picture_exists('default.png')?>" />
+                        <?php } ?>
                     </div>
                 </div>
             </div>
+            <?php } ?>
 
-            <div class="sl-slide item2" data-orientation="vertical">
-                <div class="sl-slide-inner">
-                    <div class="container">
-                        <img class="pull-right" 
-                        src="http://localhost/cel/2015/mar/projects/mercy/ci_cms/templates/front/images/sample/slider/img3.jpg"
-                        alt=""/>
-                    </div>
-                </div>
-            </div>
-
-            <div class="sl-slide item3" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-                <div class="sl-slide-inner">
-                    <div class="container">
-                        <img class="pull-right" 
-                        src="http://localhost/cel/2015/mar/projects/mercy/ci_cms/templates/front/images/sample/slider/img3.jpg" alt="" />
-                    </div>
-                </div>   
-            </div>
-
-            <div class="sl-slide item4" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-                <div class="sl-slide-inner">
-                    <div class="container">
-                        <img class="pull-right" src="http://localhost/cel/2015/mar/projects/mercy/ci_cms/templates/front/images/sample/slider/img4.jpg" alt="" />
-                    </div>
-                </div>
-            </div>
-
-            <div class="sl-slide item4" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-                <div class="sl-slide-inner">
-                    <div class="container">
-                        <img class="pull-right" src="http://localhost/cel/2015/mar/projects/mercy/ci_cms/templates/front/images/sample/slider/img5.jpg" alt="" />
-                    </div>
-                </div>
-                <nav id="nav-arrows" class="nav-arrows">
-                    <span class="nav-arrow-prev"><i class="icon-angle-left"></i></span>
-                    <span class="nav-arrow-next"><i class="icon-angle-right"></i></span> 
-                </nav>
-            </div>
+            <nav id="nav-arrows" class="nav-arrows">
+                <span class="nav-arrow-prev"><i class="icon-angle-left"></i></span>
+                <span class="nav-arrow-next"><i class="icon-angle-right"></i></span> 
+            </nav>
         </div>
     </div>   
 </section>
 <!--/Slider-->
 <?php } ?>
 
-<section class="main-info">
+<!-- <section class="main-info">
     <div class="container">
         <div class="row-fluid">
             <div class="span9">
@@ -75,7 +42,7 @@ exit;
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <?php $data_course=get_category_and_aritcles(HOME_PAGE_COURSE); ?>
 

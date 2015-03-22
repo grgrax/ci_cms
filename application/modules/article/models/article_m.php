@@ -160,7 +160,17 @@ public function read_row_by_slug($slug='')
 		return false;
 	return ($rs->first_row('array'));
 }
-
+function read_row_by_name($name='')
+{
+	if(!$name) return false;
+	$this->db->select()
+	->from($this->table)
+	->where('name',$name);
+	$rs=$this->db->get();
+	if($rs->num_rows()==0)
+		return false;
+	return ($rs->first_row('array'));
+}
 
 
 

@@ -1,5 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+function get_article_by_name($slug){
+	$ci=& get_instance();
+	try {
+		$data['row']=$ci->load->model('article/article_m')->read_row_by_slug($slug);
+		return $data;
+	} catch (Exception $e) {
+		redirect();
+	}
+}
+
+
 function get_articles_of_category($cat_id){
 	$ci=& get_instance();
 	try {

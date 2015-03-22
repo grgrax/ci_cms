@@ -49,13 +49,11 @@ class article extends Admin_Controller
 				$rules=$this->article_m->set_rules();
 				$name=array(
 					'field'=>'name',
-					'label'=>'category Name',
+					'label'=>'Article Name',
 					'rules'=>'trim|required|is_unique[tbl_articles.name]|xss_clean'
 					);
-/*				array_push($rules,$name);
-				show_pre($rules);
-				exit;
-*/				$this->form_validation->set_rules($rules);
+				array_push($rules,$name);
+				$this->form_validation->set_rules($rules);
 				if($this->form_validation->run($this)===TRUE)
 				{
 					$current_user=current_loggedin_user();
@@ -89,8 +87,9 @@ class article extends Admin_Controller
 					$this->session->set_flashdata('success', 'article added successfully');
 					$this->controller_redirect();				
 				}
-				else
+				else{
 					throw new Exception(validation_errors());
+				}
 			}			
 			$this->breadcrumb->append_crumb('Add','add');
 			$this->template_data['subview']=self::MODULE.'add';
@@ -117,7 +116,7 @@ class article extends Admin_Controller
 				$name_rule=array(
 					'field'=>'name',
 					'label'=>'Article Name',
-					'rules'=>'trim|required|xss_clean|is_name_unique['.$name.','.$id.']',
+					'rules'=>"trim|required|xss_clean|is_article_name_unique[$id]",
 					);
 				array_push($rules,$name_rule);
 				show_pre($rules);

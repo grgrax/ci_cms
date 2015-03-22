@@ -4,6 +4,24 @@ const HOME_PAGE_PARTNER='partners';
 const HOME_PAGE_COURSE='courses';
 const HOME_PAGE_SLIDER='slider';
 
+const FOOTER_ADDRESS='address';
+const FOOTER_LINKS='useful-links';
+
+function is_default($slug){
+	if(in_array($slug,
+		array(
+			HOME_PAGE_SLIDER,
+			HOME_PAGE_PARTNER,
+			HOME_PAGE_COURSE,
+			FOOTER_ADDRESS,
+			FOOTER_LINKS
+			))) {
+		return true;
+}
+else 
+	return false;
+}
+
 function show_pre($arry = Null)
 {
 	if ($arry) {
@@ -40,13 +58,7 @@ function front_template_path(){
 	return base_url().$path;
 }
 
-function is_default($slug){
-	if(in_array($slug,array('slider','partners','faculty','courses'))) {
-		return true;
-	}
-	else 
-		return false;
-}
+
 
 /* End of file cms_config.php */
 /* Location: ./application/config/cms_config.php */

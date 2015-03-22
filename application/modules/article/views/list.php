@@ -62,6 +62,7 @@
                                 <td><?php echo $row['updated_at']?format($row['updated_at'])."<br/>Updated":format($row['created_at'])."<br/>Published";?></td>
                                 <td><?php echo $article_m::status($row['status']);?></td>
                                 <td>
+                                    <?php if(is_default($row['slug'])) continue; ?>
                                     <?php if(permission_permit(array('edit-article'))) { ?>
                                     <a href="<?= $link ?>view/<?= $row['slug'] ?>"/> View </a>
                                     <a href="<?= $link ?>edit/<?= $row['slug'] ?>"/>/ Edit </a>
@@ -97,4 +98,3 @@
 
 
 
-    

@@ -8,25 +8,15 @@
         <div class="row-fluid">
 
             <!--Contact Form-->
-            <div class="span3">
-                <h4>ADDRESS</h4>
-                <ul class="unstyled address">
-                    <li>
-                        <i class="icon-home"></i><strong>Address:</strong> Tulshipur Chowk, Ghorahi<br>Dang-Rapti (Nepal)
-                    </li>
-                    <li>
-                        <i class="icon-envelope"></i>
-                        <strong>Email: </strong> info@iitinfotrain.com
-                    </li>
-                    <li>
-                        <i class="icon-globe"></i>
-                        <strong>Website:</strong> www.iitinfotrain.com
-                    </li>
-                    <li>
-                        <i class="icon-phone"></i>
-                        <strong>Cell:</strong> 9801329699
-                    </li>
-                </ul>
+            <div class="span3" id="footer_address">
+                <?php 
+                $data_address=get_article_by_name(FOOTER_ADDRESS); 
+                //show_pre($data_footer_address);
+                ?>
+                <h4>            
+                <?php echo isset($data_address['row']['name'])?$data_address['row']['name']:''?>
+                </h4>
+                <?php echo isset($data_address['row']['content'])?$data_address['row']['content']:''?>
             </div>
             <!--End Contact Form-->
 

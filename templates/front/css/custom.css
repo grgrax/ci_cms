@@ -33,3 +33,18 @@
 	line-height: 30px !important;
 	text-align: center !important;	
 }
+.img-slider{
+	width: 1080px !important;
+	height: 500px !important;
+	/*padding: 5px 5px !important;*/
+	/*overflow: hidden; */
+}
+
+.main-info {
+	padding:0 !important;
+}
+
+/*footer part*/
+#footer_address h4{
+	text-transform: capitalize;
+}

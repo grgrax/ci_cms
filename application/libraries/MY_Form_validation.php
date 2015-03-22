@@ -14,20 +14,34 @@ class MY_Form_validation extends CI_Form_validation {
 		return ( ! preg_match("/^([-a-z0-9_-\ ])+$/i", $str)) ? FALSE : TRUE;
 	}
 
-	public function is_name_unique($str,$id)
+	public function is_article_name_unique($str,$id)
 	{
 		$CI=CI::$APP;
-		$entity=$CI->load->model('category\category_m')->read_row($id);		
-		if(!$id){
-			$CI->form_validation->set_message("is_name_unique", "The %s ($str) is already used, please try another missing<br/>");
-			return FALSE;
+		$entity=$CI->load->model('article/article_m')->read_row_by_name($str);		
+		if (!$entity){
+			return TRUE;			
 		}
-		if (!$entity)
-			return TRUE;
 		else
 		{
 			if($id!=$entity['id']){
-				$CI->form_validation->set_message("is_name_unique", "The %s ($str) is already used, please try another <br/>");
+				$CI->form_validation->set_message("is_article_name_unique", "The %s ($str) is already used, please try another <br/>");
+				return FALSE;
+			}
+			return TRUE;
+		}
+	}
+
+	public function is_category_name_unique($str,$id)
+	{
+		$CI=CI::$APP;
+		$entity=$CI->load->model('category/category_m')->read_row_by_name($str);		
+		if (!$entity){
+			return TRUE;			
+		}
+		else
+		{
+			if($id!=$entity['id']){
+				$CI->form_validation->set_message("is_category_name_unique", "The %s ($str) is already used, please try another <br/>");
 				return FALSE;
 			}
 			return TRUE;
