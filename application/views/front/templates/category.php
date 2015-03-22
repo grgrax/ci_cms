@@ -1,5 +1,4 @@
 <h2><?php echo $category['name']?></h2>
-
 <!-- news -->
 <? if(isset($articles) && count($articles)) { ?>
 <? foreach ($articles as $article) { ?>

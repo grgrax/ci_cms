@@ -1,5 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+const HOME_PAGE_PARTNER='partners';
+const HOME_PAGE_COURSE='courses';
+
 function show_pre($arry = Null)
 {
     if ($arry) {

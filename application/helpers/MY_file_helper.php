@@ -92,4 +92,17 @@ function is_video_exists($pic){
 		// return false;
 	}
 }
+
+function is_article_picture_exists($pic){
+	if($pic){
+		$path=get_upload_pic_path().'/articles/';
+		$file=$path.$pic;
+		return $file;
+		if(file_exists($file)){
+			return $file;
+		}
+		return false;
+	}
+}
+
 ?>

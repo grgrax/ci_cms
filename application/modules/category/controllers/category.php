@@ -12,7 +12,7 @@ class category extends Admin_Controller
 		$this->template_data['category_m']=$this->category_m;
 		$this->template_data['actions']=category_m::actions();
 		$this->template_data['link']=base_url().self::MODULE;
-        $this->template_data['rows']=$this->category_m->read_all($this->category_m->count_rows());
+		$this->template_data['rows']=$this->category_m->read_all($this->category_m->count_rows());
 		$this->breadcrumb->append_crumb('List Categories',base_url().self::MODULE.'index');
 	}
 
@@ -60,8 +60,8 @@ class category extends Admin_Controller
 						'url'=>$this->input->post('url'),
 						'order'=>$this->category_m->count_rows()+1,
 						'published'=>1,
-                        'author'=>$current_user['id'],
-                        'status'=>1,
+						'author'=>$current_user['id'],
+						'status'=>1,
 						);
 					$path=get_relative_upload_file_path();
 					$path.=category_m::file_path;
@@ -75,7 +75,7 @@ class category extends Admin_Controller
 				}
 			}			
 			$this->breadcrumb->append_crumb('Add','add');
-            $this->template_data['subview']=self::MODULE.'add';
+			$this->template_data['subview']=self::MODULE.'add';
 			$this->load->view('admin/main_layout',$this->template_data);
 		} catch (Exception $e) {
 			$this->session->set_flashdata('error', 'Couldnt add category '.$e->getMessage());
@@ -100,8 +100,6 @@ class category extends Admin_Controller
 				{
 					$this->template_data['update_data']=array(
 						'parent_id'=>$this->input->post('parent_id')?$this->input->post('parent_id'):NULL,
-						'name'=>$this->input->post('name'),
-						'slug'=>get_slug($this->input->post('name')),
 						'content'=>$this->input->post('content'),
 						'image'=>$_FILES['image']['name'],
 						'image_title'=>$this->input->post('image_title'),
@@ -111,6 +109,10 @@ class category extends Admin_Controller
 					$path.=category_m::file_path;
 					if($_FILES['image']['name'])
 						upload_picture($path,'image');
+					if(!$this->is_default($slug)){
+						$this->template_data['insert_data']['name']=$this->input->post('name');
+						$this->template_data['slug']['name']=get_slug($this->input->post('name'));
+					}
 					$this->category_m->update_row($id,$this->template_data['update_data']);
 					$this->session->set_flashdata('success', 'category updated successfully');
 					$this->controller_redirect();				
@@ -214,8 +216,6 @@ class category extends Admin_Controller
 		if(!$slug) return $response;
 		$category=$this->category_m->read_row_by_slug($slug);
 		if($category) {
-			if(in_array($category['slug'],array('sliders','partners','faculty','courses'))) 
-				continue;
 			$response['success']=true;
 			$response['data']=$category;
 		}
@@ -223,6 +223,14 @@ class category extends Admin_Controller
 			$response['data']='category not found';
 		}
 		return $response;
+	}
+
+	function is_default($slug){
+		if(in_array($slug,array('sliders','partners','faculty','courses'))) {
+			 return true;
+		}
+		else 
+			return false;
 	}
 
 
