@@ -6,11 +6,6 @@ class article_m extends CI_Model
 
 	public $rules=array(
 		array(
-			'field'=>'name',
-			'label'=>'article Name',
-			'rules'=>'trim|required|xss_clean'
-			),
-		array(
 			'field'=>'content',
 			'label'=>'article content',
 			'rules'=>'trim|xss_clean'
@@ -187,9 +182,10 @@ function delete_row($id)
 }
 
 
-public function set_rules(array $escape_rules=NUll){
-	if($escape_rules && is_array($escape_rules)){
-		foreach($this->rules as $rule){
+public function set_rules($escape_rules=array(''),$edit=false){
+	// echo count($escape_rules);
+	if(count($escape_rules)){
+		foreach($this->rules as $key=>$rule){
 			if(in_array($rule['field'],$escape_rules)) continue;
 			$applied_rules[]=$rule;
 		}
@@ -198,6 +194,29 @@ public function set_rules(array $escape_rules=NUll){
 	return $this->rules;
 }
 
+
+function set_rules_old($escape_rules=array(),$edit=false,$id=null){
+	if(is_array($escape_rules)){
+		foreach($this->rules as $key=>$rule){
+			if($key==0 && $edit && !$id){
+				$rule['rules'].="|is_name_unique[tbl_articles,".$id."]";
+				// $rule['rules'].="|is_name_unique['tbl_articles']";
+// isAlreadyRegistered[".$user->id()."]"
+// $this->form_validation->set_rules('email', 'Email', "required|valid_email|isAlreadyRegistered[".$user->id()."]");
+				show_pre($rule);
+				exit;
+			}
+			if(in_array($rule['field'],$escape_rules)) continue;
+			$applied_rules[]=$rule;
+		}
+		die("in");
+		return $applied_rules;
+	}
+	else
+		die("out");
+	exit;
+	return $this->rules;
+}
 
 
 }

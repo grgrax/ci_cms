@@ -46,7 +46,16 @@ class article extends Admin_Controller
 			if(!permission_permit(array('list-article','add-article'))) $this->controller_redirect('Permissioin Denied');
 			if($this->input->post())
 			{
-				$this->form_validation->set_rules($this->article_m->set_rules(array('status')));
+				$rules=$this->article_m->set_rules();
+				$name=array(
+					'field'=>'name',
+					'label'=>'category Name',
+					'rules'=>'trim|required|is_unique[tbl_articles.name]|xss_clean'
+					);
+/*				array_push($rules,$name);
+				show_pre($rules);
+				exit;
+*/				$this->form_validation->set_rules($rules);
 				if($this->form_validation->run($this)===TRUE)
 				{
 					$current_user=current_loggedin_user();
@@ -80,6 +89,8 @@ class article extends Admin_Controller
 					$this->session->set_flashdata('success', 'article added successfully');
 					$this->controller_redirect();				
 				}
+				else
+					throw new Exception(validation_errors());
 			}			
 			$this->breadcrumb->append_crumb('Add','add');
 			$this->template_data['subview']=self::MODULE.'add';
@@ -101,7 +112,17 @@ class article extends Admin_Controller
 			$id=$response['data']['id'];			
 			if($this->input->post())
 			{
-				$this->form_validation->set_rules($this->article_m->set_rules());
+				$rules=$this->article_m->set_rules();
+				$name=$this->input->post('name');
+				$name_rule=array(
+					'field'=>'name',
+					'label'=>'Article Name',
+					'rules'=>'trim|required|xss_clean|is_name_unique['.$name.','.$id.']',
+					);
+				array_push($rules,$name_rule);
+				show_pre($rules);
+
+				$this->form_validation->set_rules($rules);
 				if($this->form_validation->run($this)===TRUE)
 				{
 					$current_user=current_loggedin_user();
@@ -138,7 +159,7 @@ class article extends Admin_Controller
 					$this->controller_redirect();				
 				}
 				else{
-					throw new Exception("Could not add article <hr/>");
+					throw new Exception(validation_errors());
 				}
 			}			
 			$this->breadcrumb->append_crumb('Edit','edit');

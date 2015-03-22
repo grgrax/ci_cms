@@ -1,12 +1,20 @@
+<?php 
+$data_slider=get_category_and_aritcles(HOME_PAGE_SLIDER); 
+show_pre($data_slider);
+exit;
+?>
+<?php if($data_slider) { ?>
 <!--Slider-->
 <section id="slide-show">
     <div id="slider" class="sl-slider-wrapper">
         <div class="sl-slider">
 
-            <div class="sl-slide item1" data-orientation="horizontal" >
+            <div class="sl-slide item1" data-orientation="horizontal">
                 <div class="sl-slide-inner">
                     <div class="container">
-                        <img class="pull-right" alt="" />
+                        <img class="pull-right" 
+                        src="http://localhost/cel/2015/mar/projects/mercy/ci_cms/templates/front/images/sample/slider/img3.jpg"
+                        alt=""/>
                     </div>
                 </div>
             </div>
@@ -53,6 +61,7 @@
     </div>   
 </section>
 <!--/Slider-->
+<?php } ?>
 
 <section class="main-info">
     <div class="container">
@@ -68,18 +77,18 @@
     </div>
 </section>
 
-<?php $data=get_category_and_aritcles(HOME_PAGE_COURSE); ?>
+<?php $data_course=get_category_and_aritcles(HOME_PAGE_COURSE); ?>
 
 <!-- courses starts  -->
 <section id="services">
     <div class="container">
         <div class="center" id="courses">
-            <h3><?php echo isset($data['row']['name'])?$data['row']['name']:''?> We Offer</h3>
-            <?php echo isset($data['row']['content'])?$data['row']['content']:''?>
+            <h3><?php echo isset($data_course['row']['name'])?$data_course['row']['name']:''?> We Offer</h3>
+            <?php echo isset($data_course['row']['content'])?$data_course['row']['content']:''?>
         </div>
 
         <!-- articles  starts -->
-        <?php foreach ($data['rows'] as $key => $row) { ?>
+        <?php foreach ($data_course['rows'] as $key => $row) { ?>
         <?php if($key==0 or $key%3 ==0) {?>
         <!-- row starts -->
         <div class="row-fluid">

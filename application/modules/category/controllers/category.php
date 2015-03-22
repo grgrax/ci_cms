@@ -109,7 +109,7 @@ class category extends Admin_Controller
 					$path.=category_m::file_path;
 					if($_FILES['image']['name'])
 						upload_picture($path,'image');
-					if(!$this->is_default($slug)){
+					if(is_default($slug)){
 						$this->template_data['insert_data']['name']=$this->input->post('name');
 						$this->template_data['slug']['name']=get_slug($this->input->post('name'));
 					}
@@ -225,13 +225,6 @@ class category extends Admin_Controller
 		return $response;
 	}
 
-	function is_default($slug){
-		if(in_array($slug,array('sliders','partners','faculty','courses'))) {
-			 return true;
-		}
-		else 
-			return false;
-	}
 
 
 }
