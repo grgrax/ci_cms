@@ -41,10 +41,14 @@
 }
 
 .main-info {
-	padding:0 !important;
+	/*padding:0 !important;*/
 }
 
 /*footer part*/
 #footer_address h4{
+	text-transform: capitalize;
+}
+/*footer sitemap*/
+.site-map ul li{
 	text-transform: capitalize;
 }

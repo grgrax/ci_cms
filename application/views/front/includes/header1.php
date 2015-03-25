@@ -40,9 +40,7 @@
                     <span class="icon-bar"></span>
                 </a>
                 <a id="logo" class="pull-left" href="index.html" title="Best Institute in Rapti"></a>
-                
                 <div class="nav-collapse collapse pull-right" id="menu">
-                    <!-- contact info     -->
                     <div class="row">
                         <div class="span8 pull-right">
                             <ul class="unstyled address" id="top_bar">
@@ -57,73 +55,47 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- contact info -->
-                    
-                    <!-- menu -->
-                    <?php 
-                    $data_menu=get_menus(); 
-                    // show_pre($data_menu);
-                    echo get_ol($data_menu);
-                    ?>
+                    <ul class="nav">
+                        <li><a href="<?php echo base_url('front')?>/">Home</a></li>
+                        <li><a href="<?php echo base_url('front')?>/about-us">About Us</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Courses <i class="icon-angle-down"></i></a>
+                            <ul class="dropdown-menu">                                
+                                <li><a href="diploma_level_courses.php">Diploma Level Courses</a></li>
+                                <li><a href="advanced_level_courses.php">Advanced Level Courses</a></li>
+                                <li><a href="chip_level_courses.php">Chip Level Courses</a></li> 
 
+                                <!-- <li class="dropdown dropdown-submenu">
+                                    <a href="#" data-toggle="dropdown">1</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">1.1</a></li>
+                                        <li class="dropdown dropdown-submenu">
+                                            <a href="#" data-toggle="dropdown">1.2</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">1.2.1</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">CEO Message</a></li>
+                                    </ul>
+                                </li> -->
+                                <li><a href="cretification_level_courses.php">Cretification Level Courses</a></li>
 
+                            </ul>
+                        </li>
+                        <li><a href="<?php echo base_url('front')?>/admission">Admission</a></li> 
 
-                   <!--  <ul class="nav">
-                       <li><a href="<?php echo base_url('front')?>/">Home</a></li>
-                       <li><a href="<?php echo base_url('front')?>/about-us">About Us</a></li>
-                       <li class="dropdown">
-                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Courses <i class="icon-angle-down"></i></a>
-                           <ul class="dropdown-menu">                                
-                               <li><a href="diploma_level_courses.php">Diploma Level Courses</a></li>
-                               <li><a href="advanced_level_courses.php">Advanced Level Courses</a></li>
-                               <li><a href="chip_level_courses.php">Chip Level Courses</a></li> 
-                               <li><a href="cretification_level_courses.php">Cretification Level Courses</a></li>
-                           </ul>
-                       </li>
-                       <li><a href="<?php echo base_url('front')?>/admission">Admission</a></li> 
-                       <li><a href="<?php echo base_url('front')?>/services">Services</a></li>
-                       <li><a href="<?php echo base_url('front')?>/news-events">News & Events</a></li>
-                       <li><a href="<?php echo base_url('front')?>/gallery">Gallery</a></li> 
-                       <li><a href="<?php echo base_url('front')?>/downloads">Downloads</a></li>
-                       <li><a href="<?php echo base_url('front')?>/contact-us">Contact</a></li>
-                   </ul> -->
-
-                    <!-- sud be inside ul
-                    <li class="login">
+                        <li><a href="<?php echo base_url('front')?>/services">Services</a></li>
+                        <li><a href="<?php echo base_url('front')?>/news-events">News & Events</a></li>
+                        <li><a href="<?php echo base_url('front')?>/gallery">Gallery</a></li> 
+                        <li><a href="<?php echo base_url('front')?>/downloads">Downloads</a></li>
+                        <li><a href="<?php echo base_url('front')?>/contact-us">Contact</a></li>
+                                              <!-- <li class="login">
                         <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
-                    </li> 
-                -->
-                <!-- menu -->
-
+                    </li> -->
+                </ul>          
             </div><!--/.nav-collapse -->
         </div>
     </div>
 </header>
 <!-- /header -->
 
-<?php 
-function get_ol($array, $child = FALSE)
-{
-    $str = '';   
-    if (count($array)) {
-        $str .= $child == TRUE ? '<ul class="dropdown-menu">' : '<ul class="nav">';
-        foreach ($array as $item) {
-            $str .= (isset($item['children']) && count($item['children'])) ? '<li class="dropdown">':'<li>';
-            $attributes= (isset($item['children']) && count($item['children'])) ?'class="dropdown-toggle" data-toggle="dropdown"':'';
-            if(isset($item['children']) && count($item['children'])){
-                $str .='<a href="'.base_url('front/'.$item['slug']).'"'.$attributes.'>'.$item['name'].' <i class="icon-angle-down"></i></a>';
-            } 
-            else{
-                $str .='<a href="'.base_url('front/'.$item['slug']).'"'.$attributes.'>'.$item['name'].'</a>';                
-            }
-            // Do we have any children?
-            if (isset($item['children']) && count($item['children'])) {
-                $str .= get_ol($item['children'], TRUE);
-            }
-            $str .= '</li>' . PHP_EOL;
-        }
-        $str .= '</ul>' . PHP_EOL;
-    }
-    return $str;
-}
-?>

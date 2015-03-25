@@ -7,6 +7,7 @@ const HOME_PAGE_SLIDER='slider';
 const FOOTER_ADDRESS='address';
 const FOOTER_LINKS='useful-links';
 
+
 function is_default($slug){
 	if(in_array($slug,
 		array(

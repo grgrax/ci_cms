@@ -91,7 +91,7 @@ class menu_m extends CI_Model
 	{
 		$this->db->select();
 		$this->db->from($this->table);
-		$this->db->where("status != ",self::DELETED);
+		$this->db->where("status",self::ACTIVE);
 		$this->db->order_by("order", "asc");
 		$query = $this->db->get();
 		$menus=$query->result_array();
@@ -131,7 +131,7 @@ class menu_m extends CI_Model
 
 	public function get_parents()
 	{
-		$this->db->select('id,name')->from($this->table)->where("status =".self::ACTIVE." and parent_id is NULL");
+		$this->db->select('id,name,slug')->from($this->table)->where("status =".self::ACTIVE." and parent_id is NULL");
 		$rs=$this->db->get();
 		return $rs->result_array();				 
 	}

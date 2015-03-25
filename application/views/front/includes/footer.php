@@ -14,30 +14,29 @@
                 //show_pre($data_footer_address);
                 ?>
                 <h4>            
-                <?php echo isset($data_address['row']['name'])?$data_address['row']['name']:''?>
+                    <?php echo isset($data_address['row']['name'])?$data_address['row']['name']:''?>
                 </h4>
                 <?php echo isset($data_address['row']['content'])?$data_address['row']['content']:''?>
             </div>
             <!--End Contact Form-->
 
-            <!--Important Links-->
-            <div id="tweets" class="span3">
+            <!-- site map -->
+            <?php $data=get_menu(); //show_pre($data);?>
+            <?php if($data) { ?>
+            <div id="tweets" class="span3 site-map">
                 <h4>Site Map</h4>
                 <div>
                     <ul class="arrow">
-                        <li><a href="index.php">Home</a></li>
-                        <li><a href="about_us.php">About Us</a></li>
-                        <li><a href="#">Courses</a></li>
-                        <li><a href="admission.php">Admission</a></li>
-                        <li><a href="services.php">Services</a></li>
-                        <li><a href="news_events.php">News & Events</a></li>
-                        <li><a href="gallery.php">Gallery</a></li>
-                        <li><a href="downloads.php">Downloads</a></li>
-                        <li><a href="contact.php">Contact</a></li>
+                        <?php foreach ($data['rows'] as $key => $row) { ?>
+                        <li>
+                            <?php echo anchor("front/".$row['slug'], $row['name']);?>                            
+                        </li>
+                        <?php } ?>
                     </ul>
-                </div>  
+                </div>
             </div>
-            <!--Important Links-->
+            <?php } ?>
+            <!-- site map -->
 
             <!--Archives-->
             <div id="archives" class="span3">

@@ -69,4 +69,24 @@ function get_category_and_aritcles($category_name){
 	}	
 }
 // partners
+// menu
+function get_menu(){
+	try {
+		$ci=& get_instance();
+		$response=$ci->load->model('menu/menu_m')->get_parents();
+		$data['rows']=$response;
+		return $data;
+	} catch (Exception $e) {
+		redirect();
+	}		
+}
 
+function get_menus(){
+	try {
+		$ci=& get_instance();
+		$response=$ci->load->model('menu/menu_m')->read_menus_for_ordering();
+		return $response;		
+	} catch (Exception $e) {
+		redirect();
+	}		
+}
