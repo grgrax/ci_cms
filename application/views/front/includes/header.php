@@ -83,16 +83,16 @@
                 if(isset($item['children'])){
                     if($item['parent_id']){
                         $str .= PHP_EOL.'<li class="dropdown dropdown-submenu">';
-                        $str .='<a href="'.$item['slug'].'">'.$item['name'].'</a>';
+                        $str .='<a href="'.base_url('front/'.$item['slug']).'">'.$item['name'].'</a>';
 
                     }else{
                         $str .= PHP_EOL.'<li class="dropdown">';
-                        $str .='<a href="'.$item['slug'].'" class="dropdown-toggle" data-toggle="dropdown">'.$item['name'].'  <i class="icon-angle-down"></i></a>';
+                        $str .='<a href="'.base_url('front/'.$item['slug']).'" class="dropdown-toggle" data-toggle="dropdown">'.$item['name'].'  <i class="icon-angle-down"></i></a>';
                     }
                 }
                 else{
                     $str .= PHP_EOL.'<li>';
-                    $str .='<a href="'.$item['slug'].'">'.$item['name'].'</a></li>';
+                    $str .='<a href="'.base_url('front/'.$item['slug']).'">'.$item['name'].'</a></li>';
                 }
             // Do we have any children?
                 if (isset($item['children']) && count($item['children'])) {
