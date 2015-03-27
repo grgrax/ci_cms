@@ -90,3 +90,16 @@ function get_menus(){
 		redirect();
 	}		
 }
+
+function no_of_child_menus($id){
+	try {
+		$ci=& get_instance();
+		$response=$ci->load->model('menu/menu_m')->nested_childs($id);
+		if($response[0]['nested_child'])
+			return $response[0]['nested_child'];
+		else 
+			return 0;
+	} catch (Exception $e) {
+		redirect();
+	}		
+}

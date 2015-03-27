@@ -57,73 +57,51 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- contact info -->
-                    
+                    <!-- contact info -->                    
                     <!-- menu -->
                     <?php 
                     $data_menu=get_menus(); 
                     // show_pre($data_menu);
                     echo get_ol($data_menu);
                     ?>
+                    <!-- menu -->
 
-
-
-                   <!--  <ul class="nav">
-                       <li><a href="<?php echo base_url('front')?>/">Home</a></li>
-                       <li><a href="<?php echo base_url('front')?>/about-us">About Us</a></li>
-                       <li class="dropdown">
-                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Courses <i class="icon-angle-down"></i></a>
-                           <ul class="dropdown-menu">                                
-                               <li><a href="diploma_level_courses.php">Diploma Level Courses</a></li>
-                               <li><a href="advanced_level_courses.php">Advanced Level Courses</a></li>
-                               <li><a href="chip_level_courses.php">Chip Level Courses</a></li> 
-                               <li><a href="cretification_level_courses.php">Cretification Level Courses</a></li>
-                           </ul>
-                       </li>
-                       <li><a href="<?php echo base_url('front')?>/admission">Admission</a></li> 
-                       <li><a href="<?php echo base_url('front')?>/services">Services</a></li>
-                       <li><a href="<?php echo base_url('front')?>/news-events">News & Events</a></li>
-                       <li><a href="<?php echo base_url('front')?>/gallery">Gallery</a></li> 
-                       <li><a href="<?php echo base_url('front')?>/downloads">Downloads</a></li>
-                       <li><a href="<?php echo base_url('front')?>/contact-us">Contact</a></li>
-                   </ul> -->
-
-                    <!-- sud be inside ul
-                    <li class="login">
-                        <a data-toggle="modal" href="#loginForm"><i class="icon-lock"></i></a>
-                    </li> 
-                -->
-                <!-- menu -->
-
-            </div><!--/.nav-collapse -->
+                </div><!--/.nav-collapse -->
+            </div>
         </div>
-    </div>
-</header>
-<!-- /header -->
+    </header>
+    <!-- /header -->
 
-<?php 
-function get_ol($array, $child = FALSE)
-{
-    $str = '';   
-    if (count($array)) {
-        $str .= $child == TRUE ? '<ul class="dropdown-menu">' : '<ul class="nav">';
-        foreach ($array as $item) {
-            $str .= (isset($item['children']) && count($item['children'])) ? '<li class="dropdown">':'<li>';
-            $attributes= (isset($item['children']) && count($item['children'])) ?'class="dropdown-toggle" data-toggle="dropdown"':'';
-            if(isset($item['children']) && count($item['children'])){
-                $str .='<a href="'.base_url('front/'.$item['slug']).'"'.$attributes.'>'.$item['name'].' <i class="icon-angle-down"></i></a>';
-            } 
-            else{
-                $str .='<a href="'.base_url('front/'.$item['slug']).'"'.$attributes.'>'.$item['name'].'</a>';                
-            }
+    <?php 
+    function get_ol($array, $child = FALSE,$level=0)
+    {
+        $str = '';   
+        if (count($array)) {
+            $str .= $child == TRUE ? PHP_EOL.'<ul class="dropdown-menu">': PHP_EOL. '<ul class="nav">' ;
+            foreach ($array as $item) {
+                $childs=no_of_child_menus($item['id']);
+                if(isset($item['children'])){
+                    if($item['parent_id']){
+                        $str .= PHP_EOL.'<li class="dropdown dropdown-submenu">';
+                        $str .='<a href="'.$item['slug'].'">'.$item['name'].'</a>';
+
+                    }else{
+                        $str .= PHP_EOL.'<li class="dropdown">';
+                        $str .='<a href="'.$item['slug'].'" class="dropdown-toggle" data-toggle="dropdown">'.$item['name'].'  <i class="icon-angle-down"></i></a>';
+                    }
+                }
+                else{
+                    $str .= PHP_EOL.'<li>';
+                    $str .='<a href="'.$item['slug'].'">'.$item['name'].'</a></li>';
+                }
             // Do we have any children?
-            if (isset($item['children']) && count($item['children'])) {
-                $str .= get_ol($item['children'], TRUE);
+                if (isset($item['children']) && count($item['children'])) {
+                    $str .= get_ol($item['children'], TRUE);
+                }
+                $str .= '</li>' . PHP_EOL;
             }
-            $str .= '</li>' . PHP_EOL;
+            $str .= '</ul>' . PHP_EOL;
         }
-        $str .= '</ul>' . PHP_EOL;
+        return $str;
     }
-    return $str;
-}
-?>
+    ?>

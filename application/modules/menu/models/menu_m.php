@@ -131,7 +131,10 @@ class menu_m extends CI_Model
 
 	public function get_parents()
 	{
-		$this->db->select('id,name,slug')->from($this->table)->where("status =".self::ACTIVE." and parent_id is NULL");
+		$this->db->select('id,name,slug')
+		->from($this->table)
+		->where("status =".self::ACTIVE." and parent_id is NULL")
+		->order_by('order','asc');
 		$rs=$this->db->get();
 		return $rs->result_array();				 
 	}
@@ -152,66 +155,79 @@ class menu_m extends CI_Model
 		$rs=$this->db->get();
 		return $rs->num_rows();				 
 	}	
+
+	function nested_childs($id=null)
+	{
+		$sql="select max(level) as nested_child
+		from $this->table where id 
+		in(select id from $this->table where parent_id 
+			in (select id from $this->table where parent_id=$id)
+			) and status = ".self::ACTIVE;
+		$rs=$this->db->query($sql);	
+		// echo $this->db->last_query();
+		return $rs->result_array();				 
+	}
+
 	function create_row($data)
 	{
 /*		show_pre($data);
 		exit;
 */		$this->db->insert($this->table
-			,$data);
-	}
-	function read_row($id)
-	{
-		$this->db->select()
-		->from($this->table)
-		->where('id',$id);
-		$rs=$this->db->get();
-		return ($rs->first_row('array'));
-	}
-	public function read_row_by_slug($slug='')
-	{
-		if(!$slug) return false;
-		$this->db->select()
-		->from($this->table)
-		->where('slug',$slug);
-		$rs=$this->db->get();
-		if($rs->num_rows()==0)
-			return false;
-		return ($rs->first_row('array'));
-	}
+		,$data);
+}
+function read_row($id)
+{
+	$this->db->select()
+	->from($this->table)
+	->where('id',$id);
+	$rs=$this->db->get();
+	return ($rs->first_row('array'));
+}
+public function read_row_by_slug($slug='')
+{
+	if(!$slug) return false;
+	$this->db->select()
+	->from($this->table)
+	->where('slug',$slug);
+	$rs=$this->db->get();
+	if($rs->num_rows()==0)
+		return false;
+	return ($rs->first_row('array'));
+}
 
 
 
 
 
-	function update_row($id,$data)
-	{
-		try {
-			show_pre($data);
+function update_row($id,$data)
+{
+	try {
+		show_pre($data);
 			//exit;
-			$this->db->where('id',$id);
-			$this->db->update($this->table,$data);
-			echo $this->db->last_query();
-		} catch (Exception $e) {
-			echo $e->getMessage();			
-		}
-	}
-	function delete_row($id)
-	{
 		$this->db->where('id',$id);
-		$this->db->update($this->table,array('status' =>self::DELETED));
-		
+		$this->db->update($this->table,$data);
+		echo $this->db->last_query();
+	} catch (Exception $e) {
+		echo $e->getMessage();			
 	}
+}
+function delete_row($id)
+{
+	$this->db->where('id',$id);
+	$this->db->update($this->table,array('status' =>self::DELETED));
 
-	public function set_rules(array $escape_rules=NUll){
-		if($escape_rules && is_array($escape_rules)){
-			foreach($this->rules as $rule){
-				if(in_array($rule['field'],$escape_rules)) continue;
-				$applied_rules[]=$rule;
-			}
-			return $applied_rules;
+}
+
+public function set_rules(array $escape_rules=NUll){
+	if($escape_rules && is_array($escape_rules)){
+		foreach($this->rules as $rule){
+			if(in_array($rule['field'],$escape_rules)) continue;
+			$applied_rules[]=$rule;
 		}
-		return $this->rules;
+		return $applied_rules;
 	}
+	return $this->rules;
+}
 
 
 
