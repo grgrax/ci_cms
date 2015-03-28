@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="panel-footer">
-            <input type="submit" name="add" value="Add" class="btn btn-primary"/>
+            <input type="submit" name="add" value="Edit" class="btn btn-primary"/>
             <a href="<? echo $url ?>" class="btn btn-default"/>Cancel</a>
         </div>
     </div>

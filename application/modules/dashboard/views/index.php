@@ -1,4 +1,4 @@
-<div class="text-center" style="height:400px;">
+<div class="text-center" style="height:450px;">
     <a class="quick-btn" href="#">
       <i class="fa fa-bolt fa-2x"></i>
       <span>default</span> 

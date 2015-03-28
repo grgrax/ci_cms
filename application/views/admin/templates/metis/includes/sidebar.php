@@ -23,22 +23,27 @@
       <a href="<?=base_url()?>article">Articles</a>
     </li>
     <?php } ?>
-    <?php if(permission_permit(['administrator-testimonial'])){?>
-    <li>
-      <a href="<?=base_url()?>testimonial">Testinomials</a>
-    </li>
-    <?php } ?>
+   <!--  <?php if(permission_permit(['administrator-testimonial'])){?>
+   <li>
+     <a href="<?=base_url()?>testimonial">Testinomials</a>
+   </li>
+   <?php } ?> -->
     <?php if(permission_permit(['administrator-user'])){?>            
     <li>
-      <a href="<?=base_url()?>user">User</a>
+      <a href="<?=base_url()?>user">Users</a>
     </li>
     <?php } ?>
     <li>
-      <a href="<?=base_url()?>group">Group</a>
+      <a href="<?=base_url()?>group">Groups</a>
     </li>
     <li>
-      <a href="<?=base_url()?>group/permission">Permission</a>
+      <a href="<?=base_url()?>group/permission">Permissions</a>
     </li>
+    <li> <a href="<?=base_url()?>filemanager">File Manager</a></li>
+    <?php if(permission_permit(['list-setting'])) {?>
+    <li> <a href="<?=base_url()?>setting">Settings</a></li>
+    <?php } ?>
+
 
 
   </ul><!-- /#menu -->

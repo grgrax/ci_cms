@@ -22,7 +22,7 @@ class Admin_Controller extends MY_Controller {
 		//loading globally requried helper, libraries n etc
 			$this->load->helper(array('form','text','my_text','my_date','my_table','my_dashboard','my_file','my_ui'));
 			file_helper_init();
-			$this->breadcrumb->append_crumb('Dashboard',base_url().'');
+			$this->breadcrumb->append_crumb('Dashboard',base_url('dashboard').'');
 		}
 		// show_pre($this);
 	}	

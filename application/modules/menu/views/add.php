@@ -1,6 +1,6 @@
 <form method="post" action="" enctype="multipart/form-data">
     <div class="panel panel-default">
-        <div class="panel-heading">Add menu Details</div>
+        <div class="panel-heading">Add New</div>
         <div class="panel-body">
             <div class="form-group">
                 <label for="parent_menu">Parent menu</label>

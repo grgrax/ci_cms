@@ -47,8 +47,6 @@ if(
   </script>
   <?php
 }
-else
-  echo "not found";
 switch (uri_string()) {
   case 'filemanager':{
     ?>

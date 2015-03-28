@@ -27,7 +27,7 @@ class menu extends Admin_Controller
 		$this->template_data['url']=base_url().self::MODULE;
 		$this->template_data['rows']=$this->menu_m->read_all();
 		$this->template_data['page_types']=$this->page_types_m->read_all();
-		$this->breadcrumb->append_crumb('List menus',base_url().self::MODULE.'index');
+		$this->breadcrumb->append_crumb('List Menus',base_url().self::MODULE.'index');
 	}
 
 	function index($offset=0)

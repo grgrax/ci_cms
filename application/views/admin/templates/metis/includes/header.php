@@ -100,9 +100,10 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <!-- .nav -->
           <ul class="nav navbar-nav">
-            <li> <a href="<?=base_url()?>filemanager">File Manager</a></li>
             <?php if(permission_permit(['list-setting'])) {?>
-            <li> <a href="<?=base_url()?>setting">Settings</a></li>
+            <li> <a href="<?=base_url()?>user/view_profile">View Profile</a></li>
+            <li> <a href="<?=base_url()?>user/edit_profile">Edit Profile</a></li>
+            <li> <a href="<?=base_url()?>user/change_password">Change Password</a></li>
             <?php } ?>
             <!-- <li class='dropdown '>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">

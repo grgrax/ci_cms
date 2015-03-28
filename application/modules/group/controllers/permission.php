@@ -11,7 +11,7 @@ class permission extends Admin_Controller {
 		$this->template_data['permission_m']=$this->permission_m;
 		$this->template_data['url']=base_url().self::MODULE;
 		$this->template_data['permissions']=$this->permission_m->get_permissions();
-		$this->breadcrumb->append_crumb('List permissions',base_url().self::MODULE.'index');
+		$this->breadcrumb->append_crumb('List Permissions',base_url().self::MODULE.'index');
 	}
 
 	function index($offset=0)

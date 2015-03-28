@@ -11,7 +11,7 @@ class setting extends Admin_Controller {
 		$this->template_data['setting_m']=$this->setting_m;
 		$this->template_data['actions']=setting_m::actions();
 		$this->template_data['link']=base_url().self::MODULE;
-		$this->breadcrumb->append_crumb('List Setting',base_url().self::MODULE.'index');
+		$this->breadcrumb->append_crumb('List Settings',base_url().self::MODULE.'index');
 
 	}
 

@@ -1,6 +1,6 @@
 <form method="post" action="" enctype="multipart/form-data">
     <div class="panel panel-default">
-        <div class="panel-heading">Add Permission Details</div>
+        <div class="panel-heading">Add New</div>
         <div class="panel-body">
             <?php if(isset($parent_permission) && $parent_permission){?>
             <div class="form-group">

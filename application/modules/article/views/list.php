@@ -64,8 +64,8 @@
                                 <td>
                                     <?php if(is_default($row['slug'])) continue; ?>
                                     <?php if(permission_permit(array('edit-article'))) { ?>
-                                    <a href="<?= $link ?>view/<?= $row['slug'] ?>"/> View </a>
-                                    <a href="<?= $link ?>edit/<?= $row['slug'] ?>"/>/ Edit </a>
+                                    <!-- <a href="<?= $link ?>view/<?= $row['slug'] ?>"/> View </a> -->
+                                    <a href="<?= $link ?>edit/<?= $row['slug'] ?>"/> Edit </a>
                                     <?php if(count($actions)>0) echo "/" ?>
                                     <?php } ?>
                                     <?php foreach ($actions as $k=>$action) { ?>
