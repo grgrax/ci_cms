@@ -31,10 +31,6 @@ class front extends Frontend_Controller {
 					$this->_home();
 					break;				
 				}
-				case 'contact':{
-					$this->_home();
-					break;				
-				}
 				default:{
 					$response=$this->_read_from_model();
 					if(!$response['success']) throw new Exception($response['data'], 1);

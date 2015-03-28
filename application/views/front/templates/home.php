@@ -127,23 +127,13 @@
                             <?php } 
                         } ?>
 
-                        <!-- <div class="item">
-                        <div class="row-fluid">
-                            <ul class="thumbnails">
-                                <li class="span3"><a href="#"><img class="img-circle" src="<?php echo front_template_path()?>images/sample/clients/client1.png"></a></li>
-                                <li class="span3"><a href="#"><img class="img-circle" src="<?php echo front_template_path()?>images/sample/clients/client2.png"></a></li>
-                                <li class="span3"><a href="#"><img class="img-circle" src="<?php echo front_template_path()?>images/sample/clients/client3.png"></a></li>
-                                <li class="span3"><a href="#"><img class="img-circle" src="<?php echo front_template_path()?>images/sample/clients/client4.png"></a></li>
-                            </ul>
-                        </div>
-                    </div> -->
-                </div>
-                <!-- / items -->
+                    </div>
+                    <!-- / items -->
 
+                </div>
             </div>
         </div>
     </div>
-</div>
 </section>
 <?php }?>
 <!--partners-->

@@ -48,11 +48,13 @@
                             <ul class="unstyled address" id="top_bar">
                                 <li>
                                     <i class="icon-phone"></i>
-                                    <strong>Cell:</strong> 9801329699
+                                    <strong>Cell:</strong> 
+                                    <?php echo get_setting('cell')?>
                                 </li>
                                 <li>
                                     <i class="icon-envelope"></i>
-                                    <strong>Email: </strong> info@iitinfotrain.com
+                                    <strong>Email: </strong> 
+                                    <?php echo get_setting('email')?>
                                 </li>
                             </ul>
                         </div>

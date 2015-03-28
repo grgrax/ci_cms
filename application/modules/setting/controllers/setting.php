@@ -19,7 +19,7 @@ class setting extends Admin_Controller {
 	{
 
 		$this->template_data['link']=base_url().self::MODULE;
-		$this->breadcrumb->append_crumb('List menus',base_url().self::MODULE.'index');
+		$this->breadcrumb->append_crumb('Update setting',base_url().self::MODULE.'index');
 		$this->load->model('category/category_m');
 		$this->template_data['category_m']=$this->category_m;
 		$this->template_data['categories']=$this->category_m->read_all_published($this->category_m->count_rows());
@@ -34,17 +34,12 @@ class setting extends Admin_Controller {
 		try {
 			if($this->input->post())
 			{
-				$this->form_validation->set_rules($this->input->post('setting'),'Name','trim|required|xss_clean');
-				if($this->form_validation->run($this)===TRUE)
-				{
-					foreach ($this->input->post('setting') as $key => $setting) {
-						$this->template_data['update_data']=array(
-							'name'=>$setting['name'],
-							'slug'=>get_slug($field['name']),
-							'value'=>$setting['value']
-							);
-						$this->setting_m->update_row($id,$this->template_data['update_data']);
-					}
+				foreach ($this->input->post('setting') as $id => $setting) {
+					$this->template_data['update_data']=array(
+						'value'=>$setting
+						);
+					show_pre($setting);
+					$this->setting_m->update_row($id,$this->template_data['update_data']);
 				}
 				$this->session->set_flashdata('success', 'Setting updated successfully');
 			}

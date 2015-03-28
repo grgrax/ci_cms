@@ -1,6 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
-<link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
-<link href="<?=base_url()?>assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+
+<!DOCTYPE html>
+
+
+<link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/css/main.css">
+<link rel="stylesheet" href="<?=admin_template_asset_path()?>/assets/lib/magic/magic.css">
+
 <div class="row">
 	<div class="col-lg-12">
 		<?php
@@ -53,7 +60,7 @@
 							<div class="modal-body">
 								<legend>Welcome to Login Section</legend>							
 								<div class="form-group">
-									<label for="username">Username/Email</label>
+									<label for="username">Username</label>
 									<input name="username" type="text" class="form-control" id="" placeholder="Username/Email Here" value="ramesh">
 								</div>
 								<div class="form-group">
@@ -74,9 +81,8 @@
 	</div>
 </div>
 <!-- Core Scripts - Include with every page -->
-<script src="<?=base_url()?>assets/js/jquery-1.10.2.js"></script>
-<script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
-<script src="<?=base_url()?>assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="<?=admin_template_asset_path()?>/assets/lib/jquery.min.js"></script>
+<script src="<?=admin_template_asset_path()?>/assets/lib/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$('#modal-id').modal({keyboard:false});

@@ -21,7 +21,7 @@
             <!--End Contact Form-->
 
             <!-- site map -->
-            <?php $data=get_menu(); //show_pre($data);?>
+            <?php $data=get_menu();?>
             <?php if($data) { ?>
             <div id="tweets" class="span3 site-map">
                 <h4>Site Map</h4>

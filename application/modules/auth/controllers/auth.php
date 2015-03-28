@@ -1,11 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class auth extends Admin_Controller {
+class auth extends MY_Controller {
 
 	const MODULE='auth/';
 
 	function __construct()
 	{
+		$this->load->library(array('form_validation','session','breadcrumb'));
 		parent::__construct();
 		$this->load->model('user_m');
 		$this->template_data['user_m']=$this->user_m;
@@ -19,6 +20,8 @@ class auth extends Admin_Controller {
 
 	function login()
 	{
+		if($this->session->userdata('username'))
+			redirect('dashboard');
 		try {
 			if($this->input->post())
 			{
@@ -66,8 +69,10 @@ class auth extends Admin_Controller {
 
 	function logout()
 	{
+		// $this->session->unset_userdata('username');
 		$this->session->sess_destroy();
-		redirect(base_url());
+		// $this->login();
+		redirect('auth/login');
 	}
 
 

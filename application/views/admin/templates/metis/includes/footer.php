@@ -2,7 +2,7 @@
 <!-- end #content -->
 </div><!-- /#wrap -->
 <div id="footer">
-  <p>2013 &copy; Metis Admin</p>
+  <p><?php echo date('Y');?> &copy; Admin Panel</p>
 </div>
 <!-- #helpModal -->
 <div id="helpModal" class="modal fade">

@@ -96,13 +96,13 @@ class setting_m extends MY_Model {
 		$rs=$this->db->get();
 		return $rs->first_row('array');
 	}
-	public function read_row_by_slug($slug='')
+	public function read_row_by_name($name='')
 	{
-		if(!$slug)
+		if(!$name)
 			return false;
 		$this->db->select()
 		->from($this->table)
-		->where('slug',$slug);
+		->where('name',$name);
 		$rs=$this->db->get();
 		if($rs->num_rows()==0)
 			return false;

@@ -52,3 +52,15 @@
 .site-map ul li{
 	text-transform: capitalize;
 }
+/*contact page*/
+.contact-address{
+	text-transform: capitalize;
+}
+.contact-address ul li{
+	padding: 5px 0px;
+}
+.contact-address ul li i{
+	margin: 0px 5px;
+}
+
+/*contact page*/

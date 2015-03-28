@@ -103,3 +103,15 @@ function no_of_child_menus($id){
 		redirect();
 	}		
 }
+
+// setting
+function get_setting($name){
+	try {
+		$ci=& get_instance();
+		$response=$ci->load->model('setting/setting_m')->read_row_by_name($name);
+		return $response['value'];		
+	} catch (Exception $e) {
+		redirect();
+	}		
+}
+// setting
