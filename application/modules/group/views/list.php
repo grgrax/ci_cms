@@ -29,8 +29,8 @@
 							<td><?php echo count_group_user($row['id']) ?></td>
 							<td><?php echo group_m::status($row['status']);?></td>
 							<td>
-							<?php echo generate_action_links($group_m,$data['action_links'],$url,$row['id']);?>
-							<?php echo " / ".anchor($url."group_permsission/".$row['slug'],"Group Permsission");?>
+							<?php echo generate_action_links($group_m,$data['action_links'],$link,$row['id']);?>
+							<?php echo " / ".anchor($link."group_permsission/".$row['slug'],"Group Permsission");?>
 							</td>
 						</tr>
 						<?
@@ -49,7 +49,7 @@
 	</div>
 	<div class="panel-footer">
 		<div class="table-footer">
-			<a href="<?= $url ?>add" class="btn btn-primary"/>Add New  </a>
+			<a href="<?= $link ?>add" class="btn btn-primary"/>Add New  </a>
 			<ul class="pagination">
 				<? if (!empty($pages)) echo $pages; ?>
 			</ul>

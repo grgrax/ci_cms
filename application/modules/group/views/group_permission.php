@@ -57,7 +57,7 @@
 		<div class="table-footer">
 			<span class="btn btn-primary btn-select-all">Select All</span>
 			<input type="submit" value="Update" class="btn btn-primary">
-			<a href="<?= $url?>" class="btn btn-primary"/>Cancel  </a>
+			<a href="<?= $link?>" class="btn btn-primary"/>Cancel  </a>
 			<ul class="pagination">
 				<? if (!empty($pages)) echo $pages; ?>
 			</ul>

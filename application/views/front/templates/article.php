@@ -1,2 +1,2 @@
-<h2><?php echo $article['name']?></h2>
-<?php echo $article['content']?>	
+<h2><?php echo isset($article['name'])?$article['name']:''?></h2>
+<?php echo isset($article['content'])?$article['content']:''?>	

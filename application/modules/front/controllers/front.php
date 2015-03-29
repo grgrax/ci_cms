@@ -55,10 +55,7 @@ class front extends Frontend_Controller {
 			log_message('error', 'Could not load template ' . $this->active_template .' in file ' . __FILE__ . ' at line ' . __LINE__);
 			$this->active_template='404';
 		}
-/*		echo "load :";
-		show_pre($this->data['content']);
-		echo "<hr/>template:".$this->active_template;
-*/		
+
 		$this->data['subview']=$this->active_template;
 		$this->load->view('front/main_layout',$this->data);
 	}

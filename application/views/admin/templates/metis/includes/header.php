@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CMS</title>
+  <title>Dashboard</title>
 
   <!--Mobile first-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,6 +76,9 @@
           </button>
           <a href="<?=base_url('dashboard')?>" class="navbar-brand">
             <img src="<?=admin_template_asset_path()?>/assets/img/logo.png" alt="">
+          </a> 
+          <a href="<?=base_url()?>" class="navbar-brand">
+            <img src="<?=admin_template_asset_path()?>/assets/img/view_site.png" alt="">
           </a> 
         </header>
         <div class="topnav">

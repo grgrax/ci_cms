@@ -23,7 +23,7 @@
 								<td><?=$row['name'] ?></td>
 								<td>
 									<textarea cols="50" rows="2"
-									name="setting[<?php echo $row['id']?>][desc]"
+									name="setting[<?php echo $row['id']?>]"
 									class="form-control" 
 									placeholder="Description"><?=$row['value'] ?></textarea> 
 								</td>

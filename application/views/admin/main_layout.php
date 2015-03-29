@@ -41,55 +41,6 @@ function template_validation(){
 
 ?>
 
-<?php if(config_item('admin_template')=='default') { ?>
-<!-- template default  -->
-<!-- maincontent starts -->        
-<div class="row">
-  <div class="col-lg-12">
-    <?php template_flash(); ?>
-  </div>
-</div>
-<?php template_validation()?>
-<?php if(isset($class) && isset($message)){ ?>
-<!-- flash message -->
-<!-- flash message ends-->
-<?php } ?>
-<!-- breadcumrb -->
-<ol class="breadcrumb">
-  <?php echo $this->breadcrumb->output();?>
-</ol>    
-<!-- breadcumrb ends -->
-<!-- subview -->
-<?php $this->load->view($subview);?>
-<!-- subview ends -->
-</div>
-</div>
-<!-- maincontent ends --> 
-<!-- template default ends -->
-<!-- template charisma  ends-->
-<?php }?>
-
-<?php if(config_item('admin_template')=='charisma-master') { ?>
-<!-- template charisma  starts-->
-<!-- breadcumrb -->
-<div>
-  <ul class="breadcrumb">
-    <li>
-      <a href="#">Home</a> <span class="divider">/</span>
-    </li>
-    <li>
-      <a href="#">Dashboard</a>
-    </li>
-  </ul>
-</div>
-<!-- breadcumrb ends -->
-<!-- subview -->
-<?php $this->load->view($subview);?>
-<!-- subview ends -->
-<!-- template charisma  ends-->
-<?php }?>
-
-
 
 <?php if(config_item('admin_template')=='metis') { ?>
 <!-- template charisma  starts-->

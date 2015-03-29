@@ -86,6 +86,7 @@ class User_m extends MY_Model {
 	{
 		$this->db->where('id',$id);
 		$this->db->update($this->table,$data);
+
 	}
 	public function read_row($id)
 	{

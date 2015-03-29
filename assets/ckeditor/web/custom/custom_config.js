@@ -5,7 +5,7 @@
 
  CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
-	//config.uiColor = '#AADC6E';
+	// config.uiColor = '#AADC6E';
 	config.removeButtons = 'Save';
 	config.removePlugins = 'about,language,forms,flash,bidi';
 	config.filebrowserBrowseUrl = '../php/browse.php';

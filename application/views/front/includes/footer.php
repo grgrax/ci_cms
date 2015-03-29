@@ -110,10 +110,10 @@
 
             <div class="span6">
                 <ul class="social pull-right">
-                    <li><a href="#"><i class="icon-facebook"></i></a></li>
-                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-                    <li><a href="#"><i class="icon-google-plus"></i></a></li>                       
-                    <li><a href="#"><i class="icon-youtube"></i></a></li>                  
+                    <li><a href="<?php echo get_setting('facebook_link')?>"><i class="icon-facebook"></i></a></li>
+                    <li><a href="<?php echo get_setting('twitter_link')?>"><i class="icon-twitter"></i></a></li>
+                    <li><a href="<?php echo get_setting('google_plus_link')?>"><i class="icon-google-plus"></i></a></li>                       
+                    <li><a href="<?php echo get_setting('youtube_link')?>"><i class="icon-youtube"></i></a></li>                  
                 </ul>
             </div>
 

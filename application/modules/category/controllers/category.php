@@ -75,7 +75,7 @@ class category extends Admin_Controller
 					$this->session->set_flashdata('success', 'category added successfully');
 					$this->controller_redirect();				
 				}else{
-					throw new Exception(validation_error());
+					throw new Exception(validation_errors());
 				}
 			}			
 			$this->breadcrumb->append_crumb('Add','add');

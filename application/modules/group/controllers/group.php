@@ -13,7 +13,7 @@ class group extends Admin_Controller {
 		$this->template_data['group_m']=$this->group_m;
 		$this->template_data['status']=group_m::status();
 		$this->template_data['actions']=group_m::actions();
-		$this->template_data['url']=base_url().self::MODULE;
+		$this->template_data['link']=base_url().self::MODULE;
 		$this->template_data['groups']=$this->group_m->get_groups();
 		$this->breadcrumb->append_crumb('List Groups',base_url().self::MODULE.'index');
 	}
@@ -56,18 +56,14 @@ class group extends Admin_Controller {
 					$this->session->set_flashdata('success', 'Group added successfully');
 					$this->controller_redirect();				
 				}
-				else{
-					throw new Exception("Could not add Testimonial <hr/>");
-				}
 			}			
+			$this->breadcrumb->append_crumb('Add','add');
+			$this->template_data['subview']=self::MODULE.'add';
+			$this->load->view('admin/main_layout',$this->template_data);
 		} catch (Exception $e) {
-			// redirect(current_url());
-			// $this->session->set_flashdata('error', $e->getMessage());
-			// redirect(base_url()."testimonial/add");				
+			$this->session->set_flashdata('error', 'Couldnt add group '.$e->getMessage());
+			redirect(current_url());
 		}
-		$this->breadcrumb->append_crumb('Add','add');
-		$this->template_data['subview']=self::MODULE.'add';
-		$this->load->view('admin/main_layout',$this->template_data);
 	}
 
 	function edit($id)
@@ -186,8 +182,8 @@ class group extends Admin_Controller {
 	}
 
 	function controller_redirect(){
-		$this->template_data['url']=base_url().self::MODULE;
-		redirect($this->template_data['url']);				
+		$this->template_data['link']=base_url().self::MODULE;
+		redirect($this->template_data['link']);				
 	}
 
 }	

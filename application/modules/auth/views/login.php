@@ -10,42 +10,6 @@
 
 <div class="row">
 	<div class="col-lg-12">
-		<?php
-		if($this->session->flashdata('success')){
-			$class="alert-success";
-			$message=$this->session->flashdata('success');
-		}
-		else if($this->session->flashdata('error')){
-			$class="alert-danger";
-			$message=$this->session->flashdata('error');
-		}
-		?>
-		<?php if(validation_errors()){ ?>
-		<!-- form validation -->
-		<div class="row"><br/>      
-			<div class="alert alert-danger" alert-dismissible>
-				<button type="button" class="close" data-dismiss="alert">
-					<span aria-hidden="true">&times;</span>
-					<span class="sr-only">Close</span>
-				</button>
-				<?php echo validation_errors()?>
-			</div>
-		</div>
-		<!-- form validation ends -->
-		<?php } ?>
-		<?php if(isset($class) && isset($message)){ ?>
-		<!-- flash message -->
-		<div class="row"><br/>      
-			<div class="alert <?php echo isset($class)?$class:'';?>" alert-dismissible>
-				<button type="button" class="close" data-dismiss="alert">
-					<span aria-hidden="true">&times;</span>
-					<span class="sr-only">Close</span>
-				</button>
-				<?php echo isset($message)?$message:'';?>
-			</div>
-		</div>
-		<!-- flash message ends-->
-		<?php } ?>
 		<!-- subview -->
 		<div class="row">
 			<!-- <a class="btn btn-primary" data-toggle="modal" href='#modal-id'>Trigger modal</a> -->
@@ -58,14 +22,31 @@
 								<h4 class="modal-title">Admin Panel</h4>
 							</div>
 							<div class="modal-body">
-								<legend>Welcome to Login Section</legend>							
+								<legend>Welcome to Login Section</legend>	
+								<?php if($this->session->flashdata('error') or validation_errors()){ ?>
+								<!-- flash message -->
+								<div class="form-group">     
+									<div class="alert alert-danger" alert-dismissible>
+										<button type="button" class="close" data-dismiss="alert">
+											<span aria-hidden="true">&times;</span>
+											<span class="sr-only">Close</span>
+										</button>
+										<?php echo $this->session->flashdata('error')?$this->session->flashdata('error'):'';?>
+										<?php if(validation_errors()) echo validation_errors()?>
+									</div>
+								</div>
+								<!-- flash message ends-->
+								<?php } ?>
+
 								<div class="form-group">
 									<label for="username">Username</label>
-									<input name="username" type="text" class="form-control" id="" placeholder="Username/Email Here" value="ramesh">
+									<input name="username" type="text" class="form-control" id="" placeholder="Username Here" 
+									value="<?php echo set_value('username');?>">
 								</div>
 								<div class="form-group">
 									<label for="password">Password</label>
-									<input name="password" type="password" class="form-control" id="" placeholder="Password Here" value="ramesh">
+									<input name="password" type="password" class="form-control" id="" placeholder="Password Here" 
+									value="<?php  echo set_value('password');?>">
 								</div>
 							</div>
 							<div class="modal-footer">

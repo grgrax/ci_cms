@@ -20,9 +20,9 @@ class auth extends MY_Controller {
 
 	function login()
 	{
-		if($this->session->userdata('username'))
-			redirect('dashboard');
 		try {
+			if($this->session->userdata('username'))
+				redirect('dashboard');
 			if($this->input->post())
 			{
 				$config=array(
@@ -41,30 +41,40 @@ class auth extends MY_Controller {
 					$username=$this->input->post('username',true);
 					$pass=$this->input->post('password',true);
 					$this->load->model('user_m');
-					$this_user=$this->user_m->check_login($username,$pass);
-					if($this_user)
+					$user=$this->user_m->check_login($username,$pass);
+					if($user)
 					{
-						$this->session->set_userdata('username',$this_user['username']);
-						$this->session->set_userdata('id',$this_user['id']);
-						// echo base_url();
+						$user_m=$this->user_m;
+						switch ($user['status']) {
+							case $user_m::PENDING:{
+								throw new Exception("Pending user");
+								break;
+							}
+							case $user_m::BLOCKED:{
+								throw new Exception("Blocked user");
+								break;
+							}
+							case $user_m::DELETED:{
+								throw new Exception("Deleted user");
+								break;
+							}
+						}
+						$this->session->set_userdata('username',$user['username']);
+						$this->session->set_userdata('id',$user['id']);
 						redirect('dashboard');
-
-						// redirect(base_url());
 					}
-					//$this->redirect();				
+					else
+						throw new Exception("Invalid Username/Password");
 				}
 				else{
-					throw new Exception("Invalid User <hr/>");
+					throw new Exception(validation_errors());
 				}
 			}
+			$this->load->view('login',$this->template_data);
 		} catch (Exception $e) {
-			// redirect(current_url());
-			// $this->session->set_flashdata('error', $e->getMessage());
-			// redirect(base_url()."testimonial/add");				
+			$this->session->set_flashdata('error', "Login Failed <hr/> ".$e->getMessage());
+			redirect("auth/login");
 		}
-		// $this->template_data['subview']=self::MODULE.'login';
-		$this->load->view('login',$this->template_data);
-
 	}
 
 	function logout()

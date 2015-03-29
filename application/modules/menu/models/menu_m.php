@@ -111,6 +111,7 @@ class menu_m extends CI_Model
 						$data = array(
 							'parent_id' =>  $menu['parent_id']?$menu['parent_id']:NULL,
 							'order' => $order,
+							'level'=>$menu['depth']-1,
 							);
 						$this->db->set($data)->where('id',$id)->update($this->table);
 					}

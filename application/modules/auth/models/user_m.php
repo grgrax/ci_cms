@@ -62,8 +62,6 @@ class User_m extends MY_Model {
 		$where=array('username'=>$username,'pass'=>sha1($pass));
 		$this->db->select()->from('tbl_users')->where($where);
 		$rs=$this->db->get();
-		echo $this->db->last_query();
-		// exit;
 		return $rs->first_row('array');
 
 	}

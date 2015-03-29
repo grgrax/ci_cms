@@ -24,7 +24,7 @@
             </div>
             <div class="panel-footer">
                 <input type="submit" name="update" value="Update" class="btn btn-primary"/>
-                <a href="<?= $url ?>" class="btn btn-default"/>Cancel</a>
+                <a href="<?= $link ?>" class="btn btn-default"/>Cancel</a>
             </div>
         </div>
     </form>
