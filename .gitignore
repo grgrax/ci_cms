@@ -1,4 +1,6 @@
 #ignore proxies
 uploads/
+application/development/
+application/database.php
 
 

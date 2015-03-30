@@ -40,10 +40,49 @@ class article extends Admin_Controller
 		$this->load->view('admin/main_layout',$this->template_data);
 	}
 
-	function add()
+	function category($slug=null,$offset=0)
+	{
+		try {
+			if(!permission_permit(['list-article'])) redirect_to_dashboard();
+			$per_page=5;			
+			$response=$this->get_category($slug);
+			if(!$response['success']) throw new Exception($response['data'], 1);
+			$this->template_data['category']=$response['data'];
+
+			$id=$response['data']['id'];			
+			$total_rows=$this->article_m->count_articles_of_category($id);
+			$this->template_data['rows']=$this->article_m->read_articles_of_category($id,$per_page,$offset);
+			if($total_rows>$per_page){
+				$this->load->library('pagination');
+				$config['uri_segment'] = 4;
+				$config['base_url']=base_url("article/category/$slug");
+				$config['total_rows']=$total_rows;
+				$config['per_page']=$per_page;
+				$config['prev']='Previous';
+				$config['next']='Next';
+				$this->pagination->initialize($config);
+				$this->template_data['pages']=$this->pagination->create_links();
+			}
+			$this->template_data['offset']=$offset;
+			$this->template_data['subview']=self::MODULE.'list';
+			$this->load->view('admin/main_layout',$this->template_data);			
+		} catch (Exception $e) {
+			$this->session->set_flashdata('error', 'Couldnt load article for such category '.$e->getMessage());
+			$this->controller_redirect();			
+		}
+	}
+
+
+	function add($category=null,$name=null)
 	{
 		try {
 			if(!permission_permit(array('list-article','add-article'))) $this->controller_redirect('Permissioin Denied');
+			if($category && $name){
+				$response=$this->get_category($name);
+				if(!$response['success']) throw new Exception($response['data'], 1);
+				$this->template_data['category']=$response['data'];
+				$this->template_data['link']=base_url("article/category/$name");
+			}
 			if($this->input->post())
 			{
 				$rules=$this->article_m->set_rules();
@@ -263,7 +302,7 @@ class article extends Admin_Controller
 
 	function controller_redirect($msg=false){
 		if($msg) $this->session->set_flashdata('error', $msg);
-		$this->template_data['link']=base_url().self::MODULE;
+		$this->template_data['link'];
 		redirect($this->template_data['link']);				
 	}
 
@@ -278,6 +317,21 @@ class article extends Admin_Controller
 		}
 		else{
 			$response['data']='article not found';
+		}
+		return $response;
+	}
+
+	function get_category($slug=FALSE){
+		$response['success']=false;
+		$response['data']='Error Processing Request';
+		if(!$slug) return $response;
+		$category=$this->category_m->read_row_by_slug($slug);
+		if($category) {
+			$response['success']=true;
+			$response['data']=$category;
+		}
+		else{
+			$response['data']='category not found';
 		}
 		return $response;
 	}

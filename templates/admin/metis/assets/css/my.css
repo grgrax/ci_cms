@@ -154,3 +154,7 @@ ol.sortable {
 .ui-sortable li{
 	text-transform: capitalize;
 }
+
+.panel-heading{
+	text-transform: capitalize;
+}

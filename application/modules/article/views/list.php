@@ -1,5 +1,6 @@
+
     <div class="panel panel-default">
-        <div class="panel-heading">Articles</div>
+        <div class="panel-heading"><?php echo isset($category)?$category['name'].' :: ':'';?>Articles</div>
         <div class="panel-body">
             <table class="table table-striped table-bordered">
                 <thead>
@@ -88,7 +89,11 @@
         </div>
         <div class="panel-footer">
             <?php if(permission_permit(array('add-article'))){?>
+            <?php if(isset($category)){?>
+            <a href="<?php echo $link."add/category/".$category['name'];?>" class="btn btn-primary"/>Add New  </a>
+            <?php } else{?>
             <a href="<?= $link ?>add" class="btn btn-primary"/>Add New  </a>
+            <?php }?>
             <?php } ?>
             <ul class="pagination">
                 <?php if (!empty($pages)) echo $pages; ?>

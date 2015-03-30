@@ -128,6 +128,31 @@ function read_all_published_of_category($cat_id=null)
 	return $rs->result_array();				 
 }
 
+function read_articles_of_category($cat_id=null,$total=0,$start=0)
+{
+	$this->db->select()
+	->from($this->table)
+	->where("status != ",self::DELETED)
+	->where("status = ",self::PUBLISHED)
+	->where("category_id = ",$cat_id)
+	->order_by("id","desc")
+	->limit($total,$start);
+	$rs=$this->db->get();
+	return $rs->result_array();				 
+}
+
+function count_articles_of_category($cat_id=null)
+{
+	$this->db->select()
+	->from($this->table)
+	->where("status != ",self::DELETED)
+	->where("status = ",self::PUBLISHED)
+	->where("category_id = ",$cat_id)
+	->order_by("id","desc");
+	$rs=$this->db->get();
+	return $rs->num_rows();				 
+}
+
 function count_rows()
 {
 	$this->db->select()

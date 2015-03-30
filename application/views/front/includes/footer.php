@@ -57,7 +57,7 @@
             <!--End Archives-->
 
             <div class="span3">
-                <h4>GALLERY</h4>
+                <h4>AFFILIATES</h4>
                 <div class="row-fluid first">
                     <ul class="thumbnails">
                         <li class="span3">

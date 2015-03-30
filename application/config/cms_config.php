@@ -4,6 +4,8 @@ const HOME_PAGE_PARTNER='partners';
 const HOME_PAGE_COURSE='courses';
 const HOME_PAGE_SLIDER='slider';
 
+const NEWS_EVENTS='news-events';
+
 const FOOTER_ADDRESS='address';
 const FOOTER_LINKS='useful-links';
 
