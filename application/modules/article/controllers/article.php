@@ -1,4 +1,4 @@
-<?
+<?php
 class article extends Admin_Controller
 {
 	const MODULE='article/';

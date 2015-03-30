@@ -1,4 +1,4 @@
-<?
+<?php
 class category_m extends CI_Model
 {
 

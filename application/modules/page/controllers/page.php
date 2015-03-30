@@ -1,4 +1,4 @@
-<?
+<?php
 class page extends Admin_Controller
 {
 	const MODULE='page/';

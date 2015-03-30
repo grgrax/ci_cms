@@ -1,4 +1,4 @@
-<?
+<?php
 class article_m extends CI_Model
 {
 

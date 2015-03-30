@@ -1,4 +1,4 @@
-<?
+<?php
 class category extends Admin_Controller
 {
 	const MODULE='category/';

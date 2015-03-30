@@ -1,6 +1,6 @@
 <h2><?php echo isset($category['name'])?$category['name']:''?></h2>
-<? if(isset($articles) && count($articles)) { ?>
-<? foreach ($articles as $key=>$article) { ?>
+<?php if(isset($articles) && count($articles)) { ?>
+<?php foreach ($articles as $key=>$article) { ?>
 <div>
 	<h3><?php echo ($key+1).". "; echo $article['name']?></h3>
 	<?php if($article['image'] && is_article_picture_exists($article['image'])){?>

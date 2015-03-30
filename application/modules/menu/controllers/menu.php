@@ -1,4 +1,4 @@
-<?
+<?php
 class menu extends Admin_Controller
 {
 	const MODULE='menu/';

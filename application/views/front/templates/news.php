@@ -1,7 +1,7 @@
 <h2><?php echo isset($category['name'])?$category['name']:''?></h2>
 <!-- news -->
-<? if(isset($articles) && count($articles)) { ?>
-<? foreach ($articles as $article) { ?>
+<?php if(isset($articles) && count($articles)) { ?>
+<?php foreach ($articles as $article) { ?>
 <div class="span12 category_article" id="news">
 	<div class="blog-item well" id="category_article_inner">
 		<h3><?php echo $article['name']?></h3>

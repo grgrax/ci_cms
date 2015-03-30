@@ -20,7 +20,8 @@
  *
  */
 switch (dirname(__FILE__)) {
-	case 'D:\off\xam_at_d\htdocs\cel\2015\mar\projects\mercy\ci_cms':{
+	// case 'D:\off\xam_at_d\htdocs\cel\2015\mar\projects\mercy\ci_cms':{
+	case '/var/www/html/rax/cms/ci_cms':{
 		define('ENVIRONMENT', 'development');
 		break;		
 	}

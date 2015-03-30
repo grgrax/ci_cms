@@ -14,7 +14,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?
+                    <?php
                     if ($rows && count($rows) > 0) {
                         $c = $offset;
                         foreach ($rows as $row) {
