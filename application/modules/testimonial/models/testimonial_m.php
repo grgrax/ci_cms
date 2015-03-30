@@ -1,4 +1,4 @@
-<?
+<?php 
 class Testimonial_m extends CI_Model
 {
 

@@ -49,7 +49,7 @@
 							</div>
 						</td>
 						<td>#</td>
-					</tr>		<?
+					</tr>		<?php 
 					if ($rows && count($rows) > 0) {
 						$c = 0;
 						foreach ($rows as $row) {
@@ -68,7 +68,7 @@
 									<?php echo anchor($link."delete/".$row['slug'],"Delete",'class="a-delete"');?>
 								</td>
 							</tr>
-							<?
+							<?php 
 						}
 					}?>
 				</tbody>
@@ -80,7 +80,7 @@
 			-->
 			<input type="submit" value="Update" class="btn btn-primary">
 			<ul class="pagination">
-				<? if (!empty($pages)) echo $pages; ?>
+				<?php  if (!empty($pages)) echo $pages; ?>
 			</ul>
 		</div>
 	</div>

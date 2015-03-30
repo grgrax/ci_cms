@@ -16,7 +16,7 @@ $CI =& get_instance();
                 </tr>
             </thead>
             <tbody>
-                <?
+                <?php 
                 if ($rows && count($rows) > 0) {
                     $str='';
                     echo GenerateTableRowHTML($rows,$link);
@@ -39,7 +39,7 @@ $CI =& get_instance();
         <a href="<?= $link ?>order" class="btn btn-primary"/>Order menus</a>
         <?php } ?>
         <ul class="pagination">
-            <? if (!empty($menus)) echo $menus; ?>
+            <?php  if (!empty($menus)) echo $menus; ?>
         </ul>
     </div>
 </div>

@@ -44,7 +44,7 @@ class front extends Frontend_Controller {
 						$this->data['category']=$this->load->model('category/category_m')->read_row($menu['category_id']);						
 						$this->data['articles']=$article_m->read_all_published_of_category($menu['category_id']);						
 					}
-					$this->active_template=$template['name'];
+					echo $this->active_template=$template['name'];
 					if($template['name']=='gallery'){
 						$this->data['categories']=$category_m->read_all_published_childs($menu['category_id']);						
 					}
@@ -55,7 +55,6 @@ class front extends Frontend_Controller {
 			log_message('error', 'Could not load template ' . $this->active_template .' in file ' . __FILE__ . ' at line ' . __LINE__);
 			$this->active_template='404';
 		}
-
 		$this->data['subview']=$this->active_template;
 		$this->load->view('front/main_layout',$this->data);
 	}

@@ -29,7 +29,7 @@
         </div>
         <div class="panel-footer">
             <input type="submit" name="add" value="Add" class="btn btn-primary"/>
-            <a href="<? //echo $link ?>" class="btn btn-default"/>Cancel</a>
+            <a href="<?php  //echo $link ?>" class="btn btn-default"/>Cancel</a>
         </div>
     </div>
 </form>

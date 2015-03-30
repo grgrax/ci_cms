@@ -1,4 +1,4 @@
-<?
+<?php 
 class testimonial extends Admin_Controller
 {
 	const MODULE='testimonial/';

@@ -1,4 +1,4 @@
-<?
+<?php 
 class filemanager extends Admin_Controller
 {
 	const MODULE='filemanager/';

@@ -11,7 +11,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?
+					<?php 
 					if ($rows && count($rows) > 0) {
 						foreach ($rows as $row) {
 							?>
@@ -44,10 +44,10 @@
 									<td><?=$permission['name'] ?></td>
 									<td><?=$permission['desc'] ?></td>
 								</tr>
-								<?
+								<?php 
 						}//end of child permissons
 						?>
-						<?
+						<?php 
 					}
 				}?>
 			</tbody>
@@ -59,7 +59,7 @@
 			<input type="submit" value="Update" class="btn btn-primary">
 			<a href="<?= $link?>" class="btn btn-primary"/>Cancel  </a>
 			<ul class="pagination">
-				<? if (!empty($pages)) echo $pages; ?>
+				<?php  if (!empty($pages)) echo $pages; ?>
 			</ul>
 		</div>
 	</div>

@@ -15,7 +15,7 @@
 			</thead>
 			
 			<tbody>
-				<?
+				<?php
 				if ($rows && count($rows) > 0) {
 					$c = $offset;
 					foreach ($rows as $row) {
@@ -33,7 +33,7 @@
 							<?php echo generate_action_links($user_m,$data['action_links'],$url,$row['id']);?>
 							</td>
 						</tr>
-						<?
+						<?php 
 					}
 				}
 				else {
@@ -51,7 +51,7 @@
 		<div class="table-footer">
 			<a href="<?= $url ?>add" class="btn btn-primary"/>Add New  </a>
 			<ul class="pagination">
-				<? if (!empty($pages)) echo $pages; ?>
+				<?php  if (!empty($pages)) echo $pages; ?>
 			</ul>
 		</div>
 	</div>

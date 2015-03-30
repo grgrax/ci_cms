@@ -80,5 +80,5 @@ if($show_gallery){ ?>
 
 </div>
 </div>
-<? }// if show_gallery
+<?php }// if show_gallery
 ?>

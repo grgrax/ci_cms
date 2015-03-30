@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?
+                <?php 
                 if ($rows && count($rows) > 0) {
                     $c = $offset;
                     foreach ($rows as $row) {
@@ -77,7 +77,7 @@
                                 <?php } ?>
                             </td>
                         </tr>
-                        <?
+                        <?php 
                     }
                 } else {
                     ?>
@@ -95,7 +95,7 @@
         <a href="<?= $link ?>add" class="btn btn-primary"/>Add New  </a>
         <?php } ?>
         <ul class="pagination">
-            <? if (!empty($pages)) echo $pages; ?>
+            <?php  if (!empty($pages)) echo $pages; ?>
         </ul>
     </div>
 </div>

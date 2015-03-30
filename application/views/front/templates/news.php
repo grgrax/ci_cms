@@ -20,8 +20,8 @@
 		<?php echo $article['content']?>
 	</div>
 </div>
-<? } ?>
-<? } ?>
+<?php } ?>
+<?php } ?>
 <!-- news -->
 
 

@@ -12,7 +12,7 @@
 		<?php echo $article['content']?>
 	</p>
 </div>
-<? } ?>
-<? } ?>
+<?php } ?>
+<?php } ?>
 
 

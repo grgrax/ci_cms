@@ -13,7 +13,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?
+					<?php 
 					if ($rows && count($rows) > 0) {
 						$c = $offset;
 						foreach ($rows as $row) {
@@ -66,10 +66,10 @@
 										?>
 									</td>
 								</tr>
-								<?
+								<?php 
 						}//end of child permissons
 						?>
-						<?
+						<?php 
 					}
 				}
 				else {
